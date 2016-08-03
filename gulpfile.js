@@ -7,8 +7,8 @@ var livereload = require('gulp-livereload');
 var connectLivereload = require('connect-livereload');
 var ngConfig = require('gulp-ng-config');
 var fs = require('fs');
-var config = require('./firebase-config.js')
-var port = 3000;
+var config = require('./firebase-config.js');
+var ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('html', function() {
   gulp.src('src/**/*.html')
@@ -24,7 +24,16 @@ gulp.task('images', function() {
 
 gulp.task('browserify', function () {
   var bundler = browserify('./src/main.js', { debug: false });
-  return bundler.bundle()
+  return bundler
+    .transform({
+      global: true,
+      mangle: true,
+      comments: false,
+      compress: {
+          angular: true
+      }
+    }, 'uglifyify')
+    .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./dist'))
     .pipe(livereload());
