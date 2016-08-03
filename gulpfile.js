@@ -24,10 +24,11 @@ gulp.task('images', function() {
 
 gulp.task('browserify', function () {
   var bundler = browserify('./src/main.js', { debug: false });
+
   return bundler
     .transform({
       global: true,
-      mangle: true,
+      mangle: false,
       comments: false,
       compress: {
           angular: true
