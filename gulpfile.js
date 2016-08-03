@@ -9,6 +9,8 @@ var ngConfig = require('gulp-ng-config');
 var fs = require('fs');
 var config = require('./firebase-config.js');
 var ngAnnotate = require('gulp-ng-annotate');
+var uglify = require('gulp-uglify');
+var streamify = require('streamify');
 
 gulp.task('html', function() {
   gulp.src('src/**/*.html')
@@ -35,6 +37,7 @@ gulp.task('browserify', function () {
       }
     }, 'uglifyify')
     .bundle()
+    .pipe(streamify(uglify()))
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./dist'))
     .pipe(livereload());
