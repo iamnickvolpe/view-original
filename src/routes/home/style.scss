@@ -1,0 +1,39 @@
+.home__tv {
+  width: 50%;
+  position: relative;
+  height: 455px;
+  background-image: url("./routes/home/tv.png");
+  background-size: contain;
+  margin: 0 auto;
+  margin-top: 75px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+
+.home__phone {
+  width: 40%;
+  top: 250px;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 828px;
+  background-image: url("./routes/home/phone.png");
+  background-size: contain;
+  background-position: center top;
+  z-index: -1;
+}
+
+.home__buttons {
+  margin-top: -60px;
+  margin-left: 50%;
+  z-index: 1;
+}
+
+.home__login {
+  background-color: #6286c1;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 3px;
+  margin-right: 20px;
+  text-decoration: none;
+}

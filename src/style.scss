@@ -1,0 +1,21 @@
+// Global
+@import './normalize/normalize.css';
+@import './font-awesome/css/font-awesome.min.css';
+
+// Routes
+@import 'routes/login/style.scss';
+@import 'routes/home/style.scss';
+
+// Components
+@import 'components/main/style.scss';
+@import 'components/feed/style.scss';
+@import 'components/calendar/style.scss';
+@import 'components/settings/style.scss';
+@import 'components/notes-view/style.scss';
+@import 'components/notes-edit/style.scss';
+@import 'components/categories/style.scss';
+@import 'components/remote/style.scss';
+
+* {
+  box-sizing: border-box;
+}

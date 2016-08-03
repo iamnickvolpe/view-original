@@ -1,0 +1,51 @@
+<div class="settings">
+    <div class="settings__section">
+        <div class="settings__section-title-block">
+            <div class="settings__section-title">Google</div>
+        </div>
+        <button ng-if="!userInfo.credentials.google.access_token" ng-click="connectGoogle()">Connect with Google</button>
+        <div ng-if="userInfo.credentials.google.access_token">
+            <button ng-click="disconnectGoogle()">Disconnect from Google</button>
+            <div class="settings__input">
+                <label>Calendar</label>
+                <select ng-model="userInfo.preferences.calendar">
+                  <option ng-repeat="calendar in calendars" value="{{calendar.id}}">{{calendar.summary}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="settings__section">
+        <div class="settings__section-title-block">
+            <div class="settings__section-title">Weather Underground</div>
+            <div class="settings__section-description">Create a weather underground account <a target="_blank" href="https://www.wunderground.com/member/registration?mode=api_signup">here</a> then create a new project to receive a developer key.</div>
+        </div>
+        <div class="settings__input">
+            <label>Key</label>
+            <input type="password" ng-model="userInfo.credentials.weatherUnderground"> 
+        </div>
+        <div class="settings__input">
+            <label>Zip Code</label>
+            <input ng-model="userInfo.preferences.zip"> 
+        </div>
+    </div>
+    <div class="settings__section">
+        <div class="settings__section-title-block">
+            <div class="settings__section-title">Feedly</div>
+            <div class="settings__section-description">Get your user id and token <a target="_blank" href="https://feedly.com/v3/auth/dev">here</a>. Your user id will be displayed immediately and your token will be emailed to you.</div>
+        </div>
+         <div class="settings__input">
+            <label>User Id</label>
+            <input type="password" ng-model="userInfo.credentials.feedly.userId">
+        </div>
+        <div class="settings__input">
+            <label>Token</label>
+            <input type="password" ng-model="userInfo.credentials.feedly.token">
+        </div>
+    </div>
+    <div class="settings__section">
+        <button ng-click="saveUserInfo()">Apply Changes</button> 
+    </div>
+    <div class="settings__section">
+        <button ng-click="logout()">Logout</button>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+.settings {
+  color: #fff;
+  .settings__title-block {
+    padding: 1em;
+  }
+  .settings__section {
+    border-bottom: 1px solid #121b29;
+    padding: 1em;
+  }
+  .settings__section-title-block {
+    margin-bottom: 2em;
+  }
+  .settings__section-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: .2em;
+  }
+  .settings__section-description {
+    line-height: 1.2em;
+  }
+  .settings__input {
+    margin-bottom: 1em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  button,
+  input,
+  select {
+    display: block;
+    width: 100%;
+    padding: 1em;
+  }
+  button {
+    margin-bottom: 1em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

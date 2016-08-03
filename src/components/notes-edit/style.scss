@@ -1,0 +1,42 @@
+.notes-edit {
+  form {
+  padding: 1em;
+    input {
+      width: 100%;
+      display: block;
+      padding: 1em;
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    input,
+    button,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 1em;
+    }
+    textarea {
+      margin-bottom: 1em;
+      height: 6em;
+    }
+  }
+  .notes-edit__note {
+    padding: 16px 32px 16px 16px;
+    border-bottom: 1px solid #121b29;
+    position: relative;
+    button {
+      position: absolute;
+      overflow: hidden;
+      padding: 0px;
+      top: 12px;
+      right: 16px;
+      height: 24px;
+      width: 24px;
+      line-height: 21px;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}

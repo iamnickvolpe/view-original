@@ -1,0 +1,19 @@
+.categories {
+  padding: .5em;
+  overflow: auto;
+  .category {
+    cursor: pointer;
+    height: 180px;
+    width: 50%;
+    background-color: #6286C1;
+    float: left;
+    text-align: center;
+    line-height: 180px;
+    font-size: 1.6em;
+    color: #fff;
+    box-shadow: inset 0px 0px 0px .2em #1c283c !important;
+    &.selected {
+      background-color: #81aaef;
+    }
+  }
+}

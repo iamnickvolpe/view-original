@@ -1,0 +1,128 @@
+main {
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  .remote-inspector {
+    position: absolute;
+    z-index: 2;
+    left: -24em;
+    top: 0px;
+    bottom: 0px;
+    width: 24em;
+    transition: .1s linear;
+  }
+}
+
+.inspector-open {
+  .remote-inspector {
+    left: 0px;
+  }
+  .main-wrapper {
+    padding-left: 24em;
+  }
+}
+
+.main-wrapper {
+  transition: .1s linear;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center center;
+  left: 0;
+  width: 100%;
+  background-image: url('https://source.unsplash.com/random/1440x900');
+  background-size: cover;
+  background-repeat: no-repeat;
+  .main-wrapper__logged-in {
+    position: absolute;
+    bottom: 1em;
+    z-index: 1;
+    right: 1em;
+    font-size: .9em;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding-left: 1em;
+    border-radius: 2em;
+    a {
+      color: #fff;
+    }
+    .settings-link {
+      background-color: #6286C1;
+      height: 2em;
+      width: 2em;
+      line-height: 2em;
+      text-align: center;
+      border-radius: 4em;
+      display: inline-block;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-left: 1em;
+    }
+  }
+}
+
+.main {
+  font-family: "Scope One";
+  color: #555;
+  max-width: 74em;
+  width: 90%;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  background-color: #fff;
+  box-shadow: 0 0 3em -.3em rgba(0, 0, 0, 0.6);
+  height: 80%;
+  max-height: 32em;
+  .main__today,
+  .main__feed,
+  .main__notes-view {
+    flex: 1;
+    width: 33.33%;
+    position: relative;
+  }
+  .main__today {
+    color: #fff;
+    background-color: #6286c1;
+    .main__today-content {
+      padding: 2em;
+      >time {
+        opacity: .5;
+        display: block;
+        margin-bottom: .6em;
+      }
+    }
+  }
+  .main__notes-view {
+    background-color: #1c283c;
+    color: #fff;
+  }
+}
+
+.today-basic {
+  display: flex;
+  margin-bottom: 1.4em;
+  time,
+  weather {
+    flex: 1;
+    display: block;
+  }
+  >time {
+    font-size: 2.2em;
+    line-height: 1.2em;
+  }
+  weather {
+    text-align: right;
+    .weather__current-temp {
+      font-size: 3.6em;
+      line-height: 1em;
+    }
+    .weather__high-low {
+      padding-right: 1.4em;
+    }
+  }
+}

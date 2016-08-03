@@ -1,0 +1,24 @@
+<div class="remote-inspector">
+    <remote></remote>
+</div>
+<div class="main-wrapper">
+  <div class="main-wrapper__logged-in">{{firebaseUser.email}}<div ng-click="toggleInspector()" class="settings-link"><i class="fa fa-cog" aria-hidden="true"></i></div></div>
+    <div class="main">
+        <div class="main__today">
+            <div class="main__today-content">
+                <time style="h:mma"></time>
+                <div class="today-basic">
+                    <time style="EEEE, MMMM d"></time>
+                    <weather></weather>
+                </div>
+                <calendar></calendar>
+            </div>
+        </div>
+        <div class="main__feed">
+            <feed></feed>
+        </div>
+        <div class="main__notes-view">
+            <notes-view></notes-view>
+        </div>
+    </div>
+</div>

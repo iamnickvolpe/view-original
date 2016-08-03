@@ -1,0 +1,12 @@
+.DS_Store
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+node_modules/
+.sass-cache/
+dist/
+.env
+firebase-config.js
+firebase-config.json
+npm-debug.log

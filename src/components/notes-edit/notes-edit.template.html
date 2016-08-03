@@ -1,0 +1,9 @@
+<div class="notes-edit">
+  <form ng-submit="addNote()">
+    <textarea placeholder="Write a note..." type="text" ng-model="note.text"></textarea>
+    <button type="submit">Add</button>
+  </form>
+   <div class="notes-edit__note" ng-repeat="(key,note) in notes">
+    <div class="notes-edit__note-text">{{ note.text }} <button ng-click="removeNote(key)" class="notes-edit__note-remove"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
+   </div>
+</div>

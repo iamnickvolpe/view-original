@@ -1,0 +1,11 @@
+<div class="feed">
+  <div class="feed__channel">{{channel}}</div>
+  <div class="feed__loader"></div>
+  <div ng-repeat="item in items track by $index" ng-if="$index===feedNumber" class="feed__item">
+    <div ng-if="item.visual.url && item.visual.url!=='none'" style="background-image:url('{{item.visual.url}}')" class="feed__item-image"></div>
+    <div ng-class="{'feed__item-content--no-image': item.visual.url=='none' || !item.visual.url}" class="feed__item-content">
+      <div class="feed__item-meta">{{item.origin.title}} &bull; <span am-time-ago="item.published"></span></div>
+      <div class="feed__item-title">{{item.title}}</div>
+    </div>
+  </div>
+</div>

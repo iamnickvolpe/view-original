@@ -1,0 +1,4 @@
+<div class="categories">
+  <div ng-click="setCategory('all')" ng-class="{'selected': channel==='global.all'}" class="category">All</div>
+  <div ng-click="setCategory(category)" ng-class="{'selected': category.label===channel}" ng-repeat="category in categories" class="category">{{category.label}}</div>
+</div>

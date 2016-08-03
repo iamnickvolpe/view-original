@@ -1,0 +1,71 @@
+@keyframes decrement {
+  from {width: 100%;}
+  to {width: 0%;}
+}
+
+.feed {
+  .feed__loader {
+    background-color: #70a6ff;
+    height: .2em;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    animation-name: decrement;
+    animation-timing-function: linear;
+  }
+  .feed__channel {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: .6em 1em;
+    border-radius: 2em;
+    font-size: .8em;
+    }
+  .feed__item {
+    width: 100%;
+    margin-bottom: 2em;
+    position: absolute;
+    overflow: hidden;
+    &.ng-enter,
+    &.ng-leave {
+      transition: .5s linear;
+    }
+    &.ng-enter.ng-enter-active,
+    &.ng-leave {
+      opacity: 1;
+    }
+    &.ng-leave.ng-leave-active,
+    &.ng-enter {
+      opacity: 0;
+    }
+    .feed__item-image {
+      height: 16em;
+      width: 100%;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #fff;
+    }
+    .feed__item-content {
+      padding: 2em;
+      &.feed__item-content--no-image {
+        height: 28em;
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .feed__item-title {
+      word-wrap: break-word;
+      font-size: 2em;
+      line-height: 1.2em;
+    }
+    .feed__item-meta {
+      opacity: .5;
+      margin-bottom: .6em;
+    }
+  }
+}

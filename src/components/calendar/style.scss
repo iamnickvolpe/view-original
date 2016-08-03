@@ -1,0 +1,28 @@
+.calendar {
+  font-size: .9em;
+  display: table;
+  width: 100%;
+  position: relative;
+  .calendar__item {
+    display: table-row;
+    line-height: 2em;
+  }
+  .calendar__item-summary,
+  .calendar__item-date {
+    display: table-cell;
+  }
+  .calendar__item-date {
+    width: 6em;
+    opacity: .5;
+  }
+  .calendar__item-summary {
+    >div {
+      width: 64%;
+      position: absolute;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 1em;
+    }
+  }
+}
