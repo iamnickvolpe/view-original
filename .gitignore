@@ -7,6 +7,6 @@ node_modules/
 .sass-cache/
 dist/
 .env
-firebase-config.js
+src/firebase-config.js
 firebase-config.json
 npm-debug.log
