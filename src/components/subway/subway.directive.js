@@ -13,7 +13,6 @@ module.exports = function subway($http, $interval) {
             $http.get('/api/subway', { headers: {'x-access-token': token} })
             .success(function(response) {
               $scope.data = response.service.subway[0].line;
-              console.log($scope.data)
             });
           });
         }  
