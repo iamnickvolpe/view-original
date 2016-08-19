@@ -37,6 +37,7 @@ firebase.initializeApp({
 var google = require('./server/google.js');
 var feedly = require('./server/feedly.js');
 var weather = require('./server/weather.js');
+var subway = require('./server/subway.js');
 var verify = require('./server/verify.js');
 
 // Middleware to prevent API access
@@ -53,6 +54,9 @@ app.get('/api/feedly/categories', feedly.getCategories);
 
 // Weather API
 app.get('/api/weather', weather);
+
+// MTP API
+app.get('/api/subway', subway);
 
 // Google auth URL
 app.get('/google-auth', google.connect);

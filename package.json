@@ -44,7 +44,8 @@
     "request": "^2.72.0",
     "serve-favicon": "~2.3.0",
     "uglifyify": "^3.0.2",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "xml2js": "^0.4.17"
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js"

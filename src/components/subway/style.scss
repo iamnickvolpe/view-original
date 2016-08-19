@@ -1,0 +1,70 @@
+.subway {
+  padding: 1.6em;
+}
+.subway__line {
+  display: inline-block;
+  padding: .3em .6em;
+  border-radius: 255px;
+  color: white;
+  text-align: center;
+  margin-right: .6em;
+  margin-bottom: .6em;
+  font-family: Helvetica;
+  font-size: 0.8em;
+  >* {
+    display: inline-block;
+  }
+}
+
+.line-123 {
+  //background-color: #EE352E;
+  background-color: #f3514a;
+}
+
+.line-456 {
+  //background-color: #00933C;
+  background-color: #39d077;
+}
+
+.line-7 {
+  //background-color: #B933AD;
+  background-color: #e060d5;
+}
+
+.line-ACE {
+  //background-color: #0039A6;
+  background-color: #3976ea;
+}
+
+.line-BDFM {
+  //background-color: #FF6319; 
+  background-color: #ff854b;;
+}
+
+.line-G {
+  //background-color: #6CBE45;
+  background-color: #95d478;
+}
+
+.line-JZ {
+  //background-color: #996633;
+  background-color: #b98856;
+}
+
+.line-L {
+  //background-color: #A7A9AC;
+  background-color: #c2c4c7;
+}
+
+.line-NQR {
+  //background-color: #FCCC0A;
+  background-color: #f3cd32;
+}
+
+.line-S {
+  background-color: #808183;
+}
+
+.line-SIR {
+  background-color: #6286C1;
+}

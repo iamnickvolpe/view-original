@@ -1,6 +1,6 @@
 <div class="calendar">
   <div ng-if="items" ng-repeat="item in items track by $index" class="calendar__item">
     <div class="calendar__item-date" am-time-ago="item.start.date || item.start.dateTime"></div>
-    <div class="calendar__item-summary"><div>{{item.summary}}</div></div>
+    <div class="calendar__item-summary">{{item.summary}}</div>
   </div>
 </div>
