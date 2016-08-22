@@ -54,20 +54,21 @@
       background-color: #fff;
     }
     .feed__item-content {
-      padding: 1.6em;
+      padding: 2.6em 1.6em 1.6em 1.6em;
     }
     .feed__item-title {
       word-wrap: break-word;
-      font-size: 2em;
+      font-size: 1.8em;
       line-height: 1.2em;
     }
     .feed__item-meta {
       opacity: .5;
-      margin-bottom: .6em;
+      margin-bottom: .8em;
+      padding-right: 130px;
     }
     .feed__item-qrcode {
       position: absolute;
-      top: 12.5em;
+      top: 13em;
       padding: .2em;
       right: 1em;
       border-radius: 3px;
