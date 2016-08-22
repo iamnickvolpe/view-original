@@ -8,7 +8,7 @@
             <button ng-click="disconnectGoogle()">Disconnect from Google</button>
             <div class="settings__input">
                 <label>Calendar</label>
-                <select ng-model="userInfo.preferences.calendar">
+                <select ng-model="userInfo.preferences.calendar" ng-change="saveUserInfo()">
                   <option ng-repeat="calendar in calendars" value="{{calendar.id}}">{{calendar.summary}}</option>
                 </select>
             </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="settings__input">
             <label>Zip Code</label>
-            <input ng-model="userInfo.preferences.zip"> 
+            <input type="text" ng-model="userInfo.preferences.zip"> 
         </div>
     </div>
     <div class="settings__section">
@@ -42,6 +42,71 @@
             <input type="password" ng-model="userInfo.credentials.feedly.token">
         </div>
     </div>
+
+    <div class="settings__section">
+        <div class="settings__section-title-block">
+            <div class="settings__section-title">New York City Subway</div>
+            <div class="settings__section-description">Get real time updates about subway trains you care about.</div>
+        </div>
+         <div class="settings__input">
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['123']" id="line-123" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-123"></label>
+                <div class="settings__line-label">123</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['456']" id="line-456" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-456"></label>
+                <div class="settings__line-label">456</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['7']" id="line-7" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-7"></label>
+                <div class="settings__line-label">7</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['ACE']" id="line-ACE" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-ACE"></label>
+                <div class="settings__line-label">ACE</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['BDFM']" id="line-BDFM" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-BDFM"></label>
+                <div class="settings__line-label">BDFM</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['G']" id="line-G" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-G"></label>
+                <div class="settings__line-label">G</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['JZ']" id="line-JZ" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-JZ"></label>
+                <div class="settings__line-label">JZ</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['L']" id="line-L" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-L"></label>
+                <div class="settings__line-label">L</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['NQR']" id="line-NQR" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-NQR"></label>
+                <div class="settings__line-label">NQR</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['S']" id="line-S" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-S"></label>
+                <div class="settings__line-label">S</div>
+            </div>
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.lines['SIR']" id="line-SIR" type="checkbox" ng-change="saveUserInfo()">
+                <label for="line-SIR"></label>
+                <div class="settings__line-label">SIR</div>
+            </div>
+        </div>
+    </div>
+
     <div class="settings__section">
         <button ng-click="saveUserInfo()">Apply Changes</button> 
     </div>

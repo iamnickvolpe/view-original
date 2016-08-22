@@ -10,6 +10,9 @@ module.exports = function settings($http, $cookies, $window, $firebaseObject, Au
           return $firebaseObject(firebase.database().ref("users/"+$scope.firebaseUser.uid));
         }
 
+        var subwayRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/lines');
+        $scope.lines = $firebaseObject(subwayRef);
+
         function getCalendars() {
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/google/calendars', { headers: {'x-access-token': token} })
@@ -21,7 +24,7 @@ module.exports = function settings($http, $cookies, $window, $firebaseObject, Au
         
         $scope.saveUserInfo = function() {
           $scope.userInfo.$save().then(function() {
-            console.log('Profile saved!');
+            //console.log('Profile saved!');
           }).catch(function(error) {
             alert(error)
           });
@@ -37,13 +40,13 @@ module.exports = function settings($http, $cookies, $window, $firebaseObject, Au
 
         $scope.disconnectGoogle = function() {
           $firebaseObject(firebase.database().ref("users/"+$scope.firebaseUser.uid+'/credentials/google')).$remove().then(function(ref) {
-            console.log('Google disconnected.');
+            //console.log('Google disconnected.');
           }, function(error) {
             alert(error);
           });
 
           $firebaseObject(firebase.database().ref("users/"+$scope.firebaseUser.uid+'/preferences/calendar')).$remove().then(function(ref) {
-            console.log('Calendar removed.');
+            //console.log('Calendar removed.');
           }, function(error) {
             alert(error);
           });

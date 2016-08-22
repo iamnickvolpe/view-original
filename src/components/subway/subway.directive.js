@@ -1,4 +1,4 @@
-module.exports = function subway($http, $interval) {  
+module.exports = function subway($http, $interval, $firebaseObject) {  
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {
@@ -18,8 +18,16 @@ module.exports = function subway($http, $interval) {
         }  
 
         $scope.filter = function(line) {
-          return line.status[0] !== "GOOD SERVICE";
+          return line.status[0] !== "GOOD SERVICE" && $scope.lines[line.name[0]]===true;
         }
+
+        var subwayRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/lines');
+        var lines = $firebaseObject(subwayRef);
+
+        lines.$watch(function() {
+          $scope.lines = lines;
+        });
+
       },
       templateUrl: './components/subway/subway.template.html'
     }
