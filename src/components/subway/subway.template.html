@@ -1,5 +1,5 @@
-<div class="subway">
-  <div class="subway__line line-{{line.name[0]}}" ng-repeat="line in data" ng-if="line.status[0]!=='GOOD SERVICE'">
+<div ng-show="filtered.length>0" class="subway">
+  <div class="subway__line line-{{line.name[0]}}" ng-repeat="line in filtered = (data | filter:filter)">
     
     <i ng-if="line.status[0]==='PLANNED WORK'" class="fa fa-wrench" aria-hidden="true"></i>
     <i ng-if="line.status[0]==='SERVICE CHANGE'" class="fa fa-refresh" aria-hidden="true"></i>

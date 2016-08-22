@@ -16,6 +16,10 @@ module.exports = function subway($http, $interval) {
             });
           });
         }  
+
+        $scope.filter = function(line) {
+          return line.status[0] !== "GOOD SERVICE";
+        }
       },
       templateUrl: './components/subway/subway.template.html'
     }
