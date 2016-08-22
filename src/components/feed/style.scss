@@ -72,9 +72,8 @@
     }
     .feed__item-qrcode {
       position: absolute;
-      bottom: 1.6em;
-      right: 1.6em;
-      -webkit-filter: opacity(50%);
+      bottom: 1em;
+      right: 1em;
       canvas {
         width: 50%;
         margin-left: 50%;
