@@ -75,6 +75,10 @@
       bottom: 1.6em;
       right: 1.6em;
       -webkit-filter: opacity(50%);
+      canvas {
+        width: 50%;
+        margin-left: 50%;
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="feed__channel">{{channel}}</div>
   <div class="feed__loader"></div>
   <div ng-repeat="item in items track by $index" ng-if="$index===feedNumber" class="feed__item">
-    <qrcode ng-show="qr.$value===true" href="{{item.alternate[0].href}}" class="feed__item-qrcode" version="10" error-correction-level="M" size="100" data="{{item.alternate[0].href}}"></qrcode>
+    <qrcode ng-show="qr.$value===true" href="{{item.alternate[0].href}}" class="feed__item-qrcode" version="10" error-correction-level="M" size="200" data="{{item.alternate[0].href}}"></qrcode>
     <div ng-if="item.visual.url && item.visual.url!=='none'" style="background-image:url('{{item.visual.url}}')" class="feed__item-image"></div>
     <div ng-class="{'feed__item-content--no-image': item.visual.url=='none' || !item.visual.url}" class="feed__item-content">
       <div class="feed__item-meta">{{item.origin.title}} &bull; <span am-time-ago="item.published"></span></div>
