@@ -28,6 +28,11 @@
   .feed__item {
     width: 100%;
     overflow: hidden;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
     &.ng-enter,
     &.ng-leave {
       transition: .5s linear;
