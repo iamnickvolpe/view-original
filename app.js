@@ -18,6 +18,8 @@ app.use(cookieParser());
 // Serve static files
 app.use('/normalize', express.static(__dirname + '/node_modules/normalize.css/'));
 app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome'));
+app.use('/qrcode-generator', express.static(__dirname + '/node_modules/qrcode-generator'));
+app.use('/angular-qrcode', express.static(__dirname + '/node_modules/angular-qrcode'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Initialize Firebase on the server

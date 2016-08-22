@@ -2,9 +2,18 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject) {
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {  
+
         $scope.channel;
+
         var ref = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/category');
         var category = $firebaseObject(ref);
+
+        var qrRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/qr');
+        var qr = $firebaseObject(qrRef);
+
+        qr.$watch(function() {
+          $scope.qr = qr;
+        });
 
         category.$watch(function() {
           if(category.$value === 'global.all') {
@@ -16,7 +25,7 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject) {
         });
 
         $scope.feedNumber = 0;
-        var transitionSeconds = 10;
+        var transitionSeconds = 15;
         var loaderEl = $element[0].querySelector('.feed__loader');
         jQuery(loaderEl).css('animationDuration', transitionSeconds+'s');
 

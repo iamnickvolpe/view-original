@@ -41,6 +41,13 @@
             <label>Token</label>
             <input type="password" ng-model="userInfo.credentials.feedly.token">
         </div>
+        <div class="settings__input">
+            <div class="settings__line">
+                <input ng-model="userInfo.preferences.qr" id="qr" type="checkbox" ng-change="saveUserInfo()">
+                <label for="qr"></label>
+                <div class="settings__line-label">Show Qr Code</div>
+            </div>
+        </div>
     </div>
 
     <div class="settings__section">

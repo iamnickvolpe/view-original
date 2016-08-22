@@ -10,9 +10,6 @@ module.exports = function settings($http, $cookies, $window, $firebaseObject, Au
           return $firebaseObject(firebase.database().ref("users/"+$scope.firebaseUser.uid));
         }
 
-        var subwayRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/lines');
-        $scope.lines = $firebaseObject(subwayRef);
-
         function getCalendars() {
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/google/calendars', { headers: {'x-access-token': token} })

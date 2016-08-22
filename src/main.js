@@ -8,7 +8,7 @@ var firebase = require('firebase');
 require('./firebase-config.js');
 require('angularfire');
 
-var app = angular.module('app', [ 'ngRoute', 'ngAnimate', 'angularMoment', 'ngCookies', 'firebase', 'ngEnvVars' ]);
+var app = angular.module('app', [ 'ngRoute', 'ngAnimate', 'angularMoment', 'ngCookies', 'firebase', 'ngEnvVars', 'monospaced.qrcode' ]);
 
 app.constant('VERSION', require('../package.json').version);
 app.config(require('./config.js'));

@@ -17,15 +17,14 @@ module.exports = function subway($http, $interval, $firebaseObject) {
           });
         }  
 
-        $scope.filter = function(line) {
-          return line.status[0] !== "GOOD SERVICE" && $scope.lines[line.name[0]]===true;
-        }
-
         var subwayRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/lines');
         var lines = $firebaseObject(subwayRef);
 
         lines.$watch(function() {
           $scope.lines = lines;
+          $scope.filter = function(line) {
+            return line.status[0] !== "GOOD SERVICE" && $scope.lines[line.name[0]]===true;
+          }
         });
 
       },
