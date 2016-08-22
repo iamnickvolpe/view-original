@@ -52,7 +52,6 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject) {
             $http.get('/api/feedly/feed', { headers: {'x-access-token': token} })
             .success(function(response) {
               $scope.items = response.items;
-              console.log($scope.items)
             });
           });
         }
