@@ -26,7 +26,7 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject) {
         });
 
         $scope.feedNumber = 0;
-        var transitionSeconds = 3;
+        var transitionSeconds = 15;
         var loaderEl = $element[0].querySelector('.feed__loader');
         jQuery(loaderEl).css('animationDuration', transitionSeconds+'s');
 
