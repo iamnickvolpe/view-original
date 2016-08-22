@@ -55,11 +55,6 @@
     }
     .feed__item-content {
       padding: 1.6em;
-      &.feed__item-content--no-image {
-        height: 28em;
-        display: table-cell;
-        vertical-align: middle;
-      }
     }
     .feed__item-title {
       word-wrap: break-word;
@@ -72,11 +67,27 @@
     }
     .feed__item-qrcode {
       position: absolute;
-      bottom: 1em;
+      top: 12em;
+      padding: .2em;
       right: 1em;
+      border-radius: 3px;
+      background-color: white;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      box-shadow: 0 0 .6em .1em rgba(0, 0, 0, 0.1);
       canvas {
-        width: 50%;
-        margin-left: 50%;
+        width: 100%;
+      }
+    }
+    &.feed__item--no-image {
+      .feed__item-content {
+        height: 28em;
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .feed__item-qrcode {
+        top: 1em;
       }
     }
   }
