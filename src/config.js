@@ -10,7 +10,7 @@ module.exports = function($locationProvider, $routeProvider, ENV_VARS) {
   firebase.initializeApp(config);
 
   // Routes
-  $routeProvider.when('/app', {
+  $routeProvider.when('/dashboard', {
     templateUrl: './routes/main/index.html',
     controller: 'AppController',
     resolve: {
@@ -32,10 +32,9 @@ module.exports = function($locationProvider, $routeProvider, ENV_VARS) {
     templateUrl: './routes/login/index.html',
     controller: 'LoginController',
   })
-  /*.when('/', {
-    templateUrl: './routes/home/index.html',
-    controller: 'HomeController',
-  })*/
+  .when('/register', {
+    templateUrl: './routes/register/index.html'
+  })
   .otherwise({
     redirectTo: '/login'
   });

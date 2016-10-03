@@ -1,5 +1,5 @@
 <div class="register col-md-6 col-md-offset-3">
-    <h2>Or Register</h2>
+    <h1>Register</h1>
     <form name="form" ng-submit="register()" role="form">
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
             <label for="username">Email</label>
@@ -15,4 +15,5 @@
             <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
         </div>
     </form>
+    <p>or <a href="/Login">login</a> to an existing account</p>
 </div>

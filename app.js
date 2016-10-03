@@ -64,8 +64,28 @@ app.get('/api/subway', subway);
 app.get('/google-auth', google.connect);
 
 // Serve index
+app.get('/', function(req, res, next) {
+    res.sendFile('/dist/site-index.html', { root: __dirname });
+});
+
+app.get('/dashboard', function(req, res, next) {
+    res.sendFile('/dist/app-index.html', { root: __dirname });
+});
+
+app.get('/remote', function(req, res, next) {
+    res.sendFile('/dist/app-index.html', { root: __dirname });
+});
+
+app.get('/login', function(req, res, next) {
+    res.sendFile('/dist/app-index.html', { root: __dirname });
+});
+
+app.get('/register', function(req, res, next) {
+    res.sendFile('/dist/app-index.html', { root: __dirname });
+});
+
 app.get('/*', function(req, res, next) {
-    res.sendFile('/dist/index.html', { root: __dirname });
+    res.redirect('/')
 });
 
 // Start server

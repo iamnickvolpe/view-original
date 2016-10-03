@@ -21,6 +21,12 @@ gulp.task('images', function() {
     .pipe(livereload());
 });
 
+gulp.task('fonts', function() {
+  gulp.src(['src/**/*.woff'])
+    .pipe(gulp.dest('./dist'))
+    .pipe(livereload());
+});
+
 gulp.task('browserify', function () {
   var bundler = browserify('./src/main.js', { debug: false });
 
@@ -40,7 +46,12 @@ gulp.task('browserify', function () {
 })
 
 gulp.task('sass', function() {
-  gulp.src('src/style.scss')
+  gulp.src('src/app-style.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('dist/'))
+    .pipe(livereload());
+
+  gulp.src('src/site-style.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist/'))
     .pipe(livereload());
@@ -66,5 +77,5 @@ gulp.task('ng-config', function() {
     .pipe(gulp.dest('./src'))
 });
 
-gulp.task('dev', ['ng-config', 'html', 'images', 'browserify', 'sass', 'watch']);
-gulp.task('build', ['ng-config', 'html', 'images', 'browserify', 'sass']);
+gulp.task('dev', ['ng-config', 'html', 'fonts', 'images', 'browserify', 'sass', 'watch']);
+gulp.task('build', ['ng-config', 'html', 'fonts', 'images', 'browserify', 'sass']);

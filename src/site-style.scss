@@ -1,0 +1,279 @@
+@import './normalize/normalize.css';
+
+@font-face {
+  font-family: avenir-book;
+  src: url("../fonts/avenir/avenir-book.woff");
+}
+
+@font-face {
+  font-family: avenir-black;
+  src: url("../fonts/avenir/avenir-black.woff");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "avenir-book";
+}
+
+b {
+  font-family: "avenir-black";
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: normal;
+  margin-bottom: .2em;
+  margin-top: 0;
+  color: #FF6E62;
+  font-size: 3vw;
+}
+
+p, a {
+  margin: 0;
+  font-size: 1.4vw;
+}
+
+p {
+  margin-bottom: 2em;
+  color: #555;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.section > div {
+  width: 50%;
+}
+
+.section__content-wrapper {
+  width: 75%;
+}
+
+.section__image {
+  text-align: center;
+}
+
+.section__image img {
+  width: 50%;
+  box-shadow: 0 0 6em -0.2em rgba(0, 0, 0, 0.5);
+  min-width: 200px;
+  margin-bottom: 2em;
+}
+
+.section__image img.no-shadow {
+  box-shadow: none;
+}
+
+.section__api {
+  height: 5em;
+  width: 5em;
+  border: 1px solid #D8D8D8;
+  background-color: white;
+  display: inline-block;
+  background-size: cover;
+}
+
+.section__api.google {
+  background-image:url('../images/google.png');
+}
+
+.section__api.weatherunderground {
+  background-image:url('../images/weatherunderground.png');
+}
+
+.section__api.feedly {
+  background-image:url('../images/feedly.png');
+}
+
+.section__api.mta {
+  background-image:url('../images/mta.png');
+}
+
+.section__content-wrapper > a:first-of-type {
+  margin-right: 1em;
+}
+
+.section__content-wrapper > a:only-of-type {
+  margin-right: 0;
+}
+
+.section--main {
+  background-image:url('../images/main.jpg');
+  background-size: cover;
+  background-position: 30% center;
+  background-repeat: no-repeat;
+}
+
+.main-content {
+  background-color: #FF6E62;
+  width: 40%;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.section,
+.main-content {
+  height: 100vh;
+  min-height: 600px;
+}
+
+.main-content .main-content__wrapper {
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.main-content a.button {
+  margin-bottom: 1em;
+}
+
+.main-content a.button--util-knockout {
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
+.main-content h1 {
+  color: white;
+  margin-bottom: 1em;
+}
+
+.section--gray {
+  background-color: #F5F5F5;
+}
+
+a {
+  color: #FF6E62;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.button {
+  border-radius: 255px;
+  padding: .7em 1.4em;
+  display: inline-block;
+}
+
+a.button--main {
+  background-color: white;
+}
+
+a.button--util {
+  border: 1px solid #FF6E62;
+  color: #FF6E62;
+}
+
+a.button--util-knockout {
+  border: 1px solid #fff;
+  color: white;
+}
+
+
+.section--hand {
+  position: relative;
+}
+
+.section--hand img {
+  position: absolute;
+  bottom: -40px;
+  margin: 0;
+  right: 10%;
+  width: 28%;
+  min-width: 400px;
+}
+
+.section--hand .section__content-wrapper {
+  margin: 0 auto;
+}
+
+.section__content--centered .section__content-wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section__content--centered h1 {
+  margin-bottom: 1em;
+}
+
+.section__content--centered img {
+  width: 30%;
+  margin-bottom: 2em;
+}
+
+@media (max-width: 1024px) {
+  .section,
+  .main-content {
+    height: 600px;
+    min-height: auto;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  p, a {
+    font-size: 16px;
+  }
+
+  .section--hand img {
+    bottom: 0px;
+    right: 7vw;
+    width: 300px;
+    min-width: auto;
+  }
+
+  @media (max-width: 600px) {
+    .section {
+      display: block;
+      height: auto;
+      min-height: auto;
+      text-align: center;
+    }
+
+    .section,
+    .main-content {
+      padding: 3em 0;
+    }
+
+    .main-content {
+      position: relative;
+      width: 100%;
+      height: auto;
+      min-height: auto;
+    }
+    .section--main {
+      height: 420px;
+      background-size: 160%;
+      background-position: 0 40%;
+    }
+    .section > div {
+      width: auto;
+      display: block;
+    }
+
+    .section__content-wrapper {
+      margin: 0 auto;
+    }
+    .section--hand img {
+      position: relative;
+      right: -25px;
+      width: 200px;
+      margin-top: 3em;
+    }
+    .section--hand {
+      padding-bottom: 0;
+    }
+    .section__content--centered:first-child {
+      margin-bottom: 6em;
+    }
+  }
+}
