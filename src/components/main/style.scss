@@ -18,6 +18,9 @@ main {
 }
 
 .inspector-open {
+  .settings-link {
+    background-color: #ffa700 !important;
+  }
   .remote-inspector {
     left: 0px;
   }

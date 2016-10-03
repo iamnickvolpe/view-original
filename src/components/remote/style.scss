@@ -71,7 +71,8 @@
       max-width: 600px;
       background-color: #1C283C;
       height: 100%;
-      overflow: auto;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
   }
 }

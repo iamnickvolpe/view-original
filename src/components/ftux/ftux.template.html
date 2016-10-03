@@ -1,0 +1,11 @@
+<div class="ftux">
+  <div ng-if="ftux.weather" class="ftux__item ftux__item--weather">
+    Weather isn't setup properly. Enable weather by adding your WeatherUnderground API key and entering your zip code. <a href="#" ng-click="openInspector()">Settings</a> <a href="#" ng-click="dismiss('.ftux__item--weather')">Dismiss</a>
+  </div>
+  <div ng-if="ftux.calendar" class="ftux__item ftux__item--calendar">
+    The calendar isn't setup properly. Enable the calendar by authenticating with Google Calendar and choosing a calendar. <a href="#" ng-click="openInspector()">Settings</a> <a href="#" ng-click="dismiss('.ftux__item--calendar')">Dismiss</a>
+  </div>
+  <div ng-if="ftux.feed" class="ftux__item ftux__item--feed">
+    Feeds aren't setup properly or you've hit the maximum rate limit (250 calls/day). Enable feeds by adding your Feedly user ID and API key. <a href="#" ng-click="openInspector()">Settings</a> <a href="#" ng-click="dismiss('.ftux__item--feed')">Dismiss</a>
+  </div>
+</div>

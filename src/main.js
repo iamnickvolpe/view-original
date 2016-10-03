@@ -31,3 +31,4 @@ app.directive('notesEdit', require('./components/notes-edit/notes-edit.directive
 app.directive('categories', require('./components/categories/categories.directive.js'));
 app.directive('remote', require('./components/remote/remote.directive.js'));
 app.directive('subway', require('./components/subway/subway.directive.js'));
+app.directive('ftux', require('./components/ftux/ftux.directive.js'));

@@ -1,7 +1,7 @@
 <div class="remote">
     <div class="remote__window">
         <div class="remote__window-wrapper">
-            <settings ng-show="section==='settings'"></settings>
+            <settings ng-show="section==='setup'"></settings>
             <categories ng-show="section==='feeds'"></categories>
             <notes-edit ng-show="section==='notes'"></notes-edit>
         </div>
@@ -9,6 +9,6 @@
     <div class="remote__tabs">
         <div ng-class="{'selected':section==='feeds'}" ng-click="navigate('feeds')" class="remote__tab">Feeds</div>
         <div ng-class="{'selected':section==='notes'}" ng-click="navigate('notes')" class="remote__tab">Notes</div>
-        <div ng-class="{'selected':section==='settings'}" ng-click="navigate('settings')" class="remote__tab">Settings</div>
+        <div ng-class="{'selected':section==='setup'}" ng-click="navigate('setup')" class="remote__tab">Setup</div>
     </div>
 </div>

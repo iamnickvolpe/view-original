@@ -1,4 +1,4 @@
-module.exports = function feed($http, $interval, $timeout, $firebaseObject) {  
+module.exports = function feed($http, $interval, $timeout, $firebaseObject, $rootScope) {  
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {  
@@ -46,12 +46,21 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject) {
         $interval(function() {
           getData();
         }, 900000)
+
+        if (!$rootScope.ftux) {
+          $rootScope.ftux = {};
+        }
         
         function getData() {
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/feedly/feed', { headers: {'x-access-token': token} })
             .success(function(response) {
-              $scope.items = response.items;
+              if (response.success !== false) {
+                $scope.items = response.items;
+                $rootScope.ftux.feed = false;
+              } else {
+                $rootScope.ftux.feed = true;
+              }
             });
           });
         }

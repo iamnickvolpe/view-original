@@ -24,6 +24,10 @@ module.exports = function main($http, $cookies, $window, Auth) {
           $scope.inspectorOpen = !$scope.inspectorOpen;
         }
 
+        $scope.openInspector = function() {
+          $scope.inspectorOpen = true;
+        }
+
       },
       templateUrl: './components/main/main.template.html'
     }
