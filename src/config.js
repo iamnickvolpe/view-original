@@ -29,8 +29,7 @@ module.exports = function($locationProvider, $routeProvider, ENV_VARS) {
     }
   })
   .when('/login', {
-    templateUrl: './routes/login/index.html',
-    controller: 'LoginController',
+    templateUrl: './routes/login/index.html'
   })
   .when('/register', {
     templateUrl: './routes/register/index.html'

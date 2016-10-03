@@ -5,7 +5,13 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>View</title>
-        <meta name="description" content="A real-time dashboard for your life.">
+        <meta property="og:url" content="http://www.getview.io" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="View" />
+        <meta property="og:description" content="View is a real-time dashboard for your life. It integrates with many popular services to display relevant and timely information that you care about." />
+        <meta property="og:image" content="./images/view-ad.png" />
+
+        <meta name="description" content="View is a real-time dashboard for your life. It integrates with many popular services to display relevant and timely information that you care about.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet">
         <link rel="stylesheet" href="./app-style.css">
@@ -18,3 +24,14 @@
         <div ng-view></div>
     </body>
 </html>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85135847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

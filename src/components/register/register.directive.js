@@ -33,7 +33,7 @@ module.exports = function register($http, $cookies, $window, $firebaseAuth, $fir
           var users = {};
           users['/users/' + userId] = userData;
           firebase.database().ref().update(users).then(function() {
-            $window.location.href = '/app';
+            $window.location.href = '/dashboard';
           })
         }
       },

@@ -16,7 +16,6 @@ app.run(require('./run.js'));
 app.factory("Auth", require('./components/auth/auth.factory.js'));
 
 app.controller('AppController', require('./components/app/app.controller.js'));
-app.controller('LoginController', require('./routes/login/login.controller.js'));
 app.controller('HomeController', require('./routes/home/home.controller.js'));
 
 app.directive('main', require('./components/main/main.directive.js'));

@@ -47,12 +47,12 @@ gulp.task('browserify', function () {
 
 gulp.task('sass', function() {
   gulp.src('src/app-style.scss')
-    .pipe(sass())
+    .pipe(sass({outputStyle: 'compressed'}))
     .pipe(gulp.dest('dist/'))
     .pipe(livereload());
 
   gulp.src('src/site-style.scss')
-    .pipe(sass())
+    .pipe(sass({outputStyle: 'compressed'}))
     .pipe(gulp.dest('dist/'))
     .pipe(livereload());
 });
