@@ -24,17 +24,17 @@ This will get you the follwing keys:
 * GOOGLE_PRODREDIRECT
 * GOOGLE_DEVREDIRECT
 
-![1](https://gist.githubusercontent.com/iamnickvolpe/2822c99c0169be7765d712c110bfdc37/raw/4f639d714453af9074fdecd9a2adfb1eac58cf88/View%2520Documentation-01.png)
+![1](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-01.png)
 Go to [https://cloud.google.com](https://cloud.google.com) and sign up for a Google Cloud account. Create a new project.
 
-![2](https://gist.githubusercontent.com/iamnickvolpe/2822c99c0169be7765d712c110bfdc37/raw/ecbe3dc94e080fb86ecad3ce27aaeab9ca26e27e/View%2520Documentation-02.png)
+![2](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-02.png)
 Rename your project to something recognizable. This project will be used to authenticate your app with Google Calendar.
 
-![3](https://gist.githubusercontent.com/iamnickvolpe/2822c99c0169be7765d712c110bfdc37/raw/ecbe3dc94e080fb86ecad3ce27aaeab9ca26e27e/View%2520Documentation-04.png)
+![3](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-04.png)
 Add the Google Calendar API to your project under the "Library" section.
 
-![4](https://gist.githubusercontent.com/iamnickvolpe/2822c99c0169be7765d712c110bfdc37/raw/ecbe3dc94e080fb86ecad3ce27aaeab9ca26e27e/View%2520Documentation-07.png)
+![4](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-07.png)
 Add credentials to your project. You will be calling your API from a web server and you'll be accessing user data.
 
-![5](https://gist.githubusercontent.com/iamnickvolpe/2822c99c0169be7765d712c110bfdc37/raw/ecbe3dc94e080fb86ecad3ce27aaeab9ca26e27e/View%2520Documentation-08.png)
+![5](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-08.png)
 Add restrictions. If you're only running locally, include http://localhost:3000 to your Authorized Javascript origins. If you're running on a webserver with a domain, you can add that domain as well (http://www.yourdomain.com). Similarly, if you're running locally include http://localhost:3000/google-auth to the list of Authorized redirect URIs and if you're on a webserver, add your domain with the /google-auth route (http://www.yourdomain.com/google-auth).
