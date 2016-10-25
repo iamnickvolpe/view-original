@@ -35,7 +35,7 @@ Add the product name that will be shown to users. Something like "View" is fine 
 Download the credentials.
 
 ![8](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-13.png)
-Open the credentials up in your favorite text editor. Copy and paste the 4 relevant credentials into .env.
+Open the credentials up in your favorite text editor. Copy and paste the 2 relevant credentials into .env.
 * GOOGLE_CLIENTSECRET: client_secret (eg. x_IuGsrwPc7M9UO9Y37V8_w2)
 * GOOGLE_CLIENTID: client_id (eg. 8362947163820-7x5sgasdfpbiop8qr8y4x678wydmxk63.apps.googleusercontent.com)
 
