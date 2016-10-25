@@ -68,7 +68,6 @@ Copy and paste the credentials into .env.
 #### 4. Firebase Project Name
 
 ![13](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-16.png)
-Copy and paste the credentials into .env.
 Under the gear on the top-left of the Firebase console, navigate to "Project Settings" and copy and paste the "Project ID" into the FBS_PROJECTID section of .env.
 
 #### 5. Firebase Service Account Private Key
