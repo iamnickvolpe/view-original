@@ -2,7 +2,7 @@
 View is real-time dashboard for your life, designed to be permanently showcased on large screen in your home. It connects to many popular APIs to display relevant and timely information about recent news, weather, your commute and your calendar.
 
 ## Using View in the Cloud
-Create your own View account at [www.getview.io](http://www.getview.io/) and connect to the external APIs under the settings cog on the bottom right of the dashboard. Google Calendar is easy to connect with a simple authentication flow; however, for Feedly and WeatherUnderground, you must imput your own developer keys. Your credentials are stored securely in a Firebase database and the app can be accessed on any device with an Internet browser. [www.getview.io/remote](http://www.getview.io/remote) is designed to remotely control the dashboard in real time.
+Create your own View account at [www.getview.io](http://www.getview.io/) and connect to the external APIs under the settings cog on the bottom right of the dashboard. Google Calendar is easy to connect with a simple authentication flow; however, for Feedly and WeatherUnderground, you must input your own developer keys. Your credentials are stored securely in a Firebase database and the app can be accessed on any device with an Internet browser. The project is stored on Heroku. [www.getview.io/remote](http://www.getview.io/remote) is designed to remotely control the dashboard in real time.
 
 ## Develping with View
 ### Technical Overview
