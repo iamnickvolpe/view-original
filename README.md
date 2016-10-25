@@ -8,13 +8,13 @@ Create your own View account at [www.getview.io](http://www.getview.io/) and con
 ### Technical Overview
 View uses [NodeJS](https://nodejs.org/en/) on the back-end and [AngularJS](https://angularjs.org/) on the front-end. It uses [Firebase](https://firebase.google.com) to manage logins and store user data. It also connects to a few external APIs ([Google Cloud](https://cloud.google.com), [Feedly](http://www.feedly.com), [WeatherUnderground](https://www.wunderground.com/), and the [MTA](http://web.mta.info/developers/)) to display relevant information to users.
 
-### External APIs
+#### External APIs
 The external APIs all use back-end REST services to deliver JSON data to the client when called via Angular $http. There is also a back-end service that protects these endpoints from being called without a token. The token is generated via the Firebase API using the user's login credentials. 
 
-### Firebase
+#### Firebase
 Firebase is used on both the back-end and front-end to generate tokens for using the REST API and to read and update user data and manage logins respectively.
 
-### Developer Keys
+### Obtaining Developer Keys
 Before running the app locally, you'll need to get some keys from Google Cloud and Firebase. These keys should be stored in a file called .env in the projects root directory. Copy and rename .env-example to .env and follow the instructions below.
 
 #### 1. Google Cloud Keys (for Calendar oAuth)
