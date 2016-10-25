@@ -114,7 +114,12 @@ In your Firebase project, navigate to "Authentication > Sign-in Method". Add you
 ### Run the Project
 You'll need to install Node, NPM, and Gulp. After that, you can run these commands in your terminal or command prompt.
 
-#### Build Once
+#### Install Dependencies
+```
+npm install
+```
+
+#### Build the App
 ```
 gulp build
 ```
