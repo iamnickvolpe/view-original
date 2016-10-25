@@ -111,3 +111,23 @@ In your Firebase project, navigate to "Authentication > Sign-in Method". Enable 
 
 ![20](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-28.png)
 In your Firebase project, navigate to "Authentication > Sign-in Method". Add your domain to the list of authorized domains (eg. getview.io).
+
+### Run the Project
+You'll need to install Node, NPM, and Gulp. After that, you can run these commands in your terminal or command prompt.
+
+#### Build Once
+```
+gulp build
+```
+
+#### Build and Watch for Changes
+This will re-build and reload the browser every time a change is made.
+```
+gulp watch
+```
+
+#### Run!
+While "watching for changes", type this command in a new terminal or command prompt window then navigate to [http://localhost:3000/](http://localhost:3000/).
+```
+npm start
+```
