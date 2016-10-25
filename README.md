@@ -1,18 +1,17 @@
 # View
-## Product Overview
 View is real-time dashboard for your life, designed to be permanently showcased on large screen in your home. It connects to many popular APIs to display relevant and timely information about recent news, weather, your commute and your calendar.
 
 ## Using View in the Cloud
 Create your own View account at [www.getview.io](http://www.getview.io/) and connect to the external APIs under the settings cog on the bottom right when logged into the dashboard. Google Calendar is easy to connect with a simple authentication flow; however, for Feedly and WeatherUnderground, you must imput your own developer keys. Your credentials are stored securely in a Firebase database and the app can be accessed on any device with an Internet browser. [www.getview.io/remote](http://www.getview.io/remote) is designed to remotely control the dashboard in real time.
 
-## Develping View
+## Develping with View
 ### Technical Overview
 View uses [NodeJS](https://nodejs.org/en/) on the back-end and [AngularJS](https://angularjs.org/) on the front-end. It uses [Firebase](https://firebase.google.com) to manage logins and store user data. It also connects to a few external APIs ([Google Cloud](https://cloud.google.com), [Feedly](http://www.feedly.com), [WeatherUnderground](https://www.wunderground.com/), and the [MTA](http://web.mta.info/developers/)) to display relevant information to users.
 
-#### External APIs
+### External APIs
 The external APIs all use back-end REST services to deliver JSON data to the client when called via Angular $http. There is also a back-end service that protects these endpoints from being called without a token. The token is generated via the Firebase API using the user's login credentials. 
 
-#### Firebase
+### Firebase
 Firebase is used on both the back-end and front-end to generate tokens for using the REST API and to read and update user data and manage logins respectively.
 
 ### Developer Keys
