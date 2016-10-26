@@ -22,26 +22,14 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject, $roo
           } else {
             $scope.channel = JSON.parse(category.$value).label;
           }
+          $interval.cancel($scope.interval);
+          $scope.startInterval();
+          start();
           getData();
         });
 
-        $scope.feedNumber = 0;
         var transitionSeconds = 15;
-        var loaderEl = $element[0].querySelector('.feed__loader');
-        jQuery(loaderEl).css('animationDuration', transitionSeconds+'s');
-
-        $interval(function(){
-          var loaderEl = $element[0].querySelector('.feed__loader');
-          var newone = jQuery(loaderEl).clone(true); 
-          jQuery(loaderEl).before(newone);
-          jQuery("." + jQuery(loaderEl).attr("class") + ":last").remove();
-
-          if($scope.feedNumber < 19) {
-            $scope.feedNumber ++;
-          } else {
-            $scope.feedNumber = 0;
-          }
-        }, transitionSeconds * 1000);
+        start();
 
         $interval(function() {
           getData();
@@ -50,8 +38,34 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject, $roo
         if (!$rootScope.ftux) {
           $rootScope.ftux = {};
         }
+
+        function start() {
+          $scope.feedNumber = 0;
+          loader();
+        }
+
+        $scope.startInterval = function() {
+          $scope.interval = $interval(function(){
+            loader();
+            if($scope.feedNumber < 19) {
+              $scope.feedNumber ++;
+            } else {
+              $scope.feedNumber = 0;
+            }
+          }, transitionSeconds * 1000);
+        }
+        
+
+        function loader() {
+          var loaderEl = $element[0].querySelector('.feed__loader');
+          jQuery(loaderEl).css('animationDuration', transitionSeconds+'s');
+          var newone = jQuery(loaderEl).clone(true); 
+          jQuery(loaderEl).before(newone);
+          jQuery("." + jQuery(loaderEl).attr("class") + ":last").remove();
+        }
         
         function getData() {
+          $scope.items = [];
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/feedly/feed', { headers: {'x-access-token': token} })
             .success(function(response) {

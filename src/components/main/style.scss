@@ -1,3 +1,7 @@
+body {
+  font-family: "Scope One";
+}
+
 main {
   overflow: hidden;
   display: block;
@@ -46,9 +50,9 @@ main {
     bottom: 1em;
     z-index: 1;
     right: 1em;
-    font-size: .9em;
+    font-size: .8em;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.35);
     padding-left: 1em;
     border-radius: 2em;
     a {
@@ -58,7 +62,7 @@ main {
       background-color: #6286C1;
       height: 2em;
       width: 2em;
-      line-height: 2em;
+      line-height: 2.2em;
       text-align: center;
       border-radius: 4em;
       display: inline-block;
@@ -70,7 +74,6 @@ main {
 }
 
 .main {
-  font-family: "Scope One";
   color: #555;
   max-width: 74em;
   width: 90%;
@@ -108,12 +111,12 @@ main {
 .today-basic {
   display: flex;
   margin-bottom: 1.4em;
-  time,
+  .date,
   weather {
     flex: 1;
     display: block;
   }
-  >time {
+  .date {
     font-size: 2.2em;
     line-height: 1.2em;
   }
@@ -127,4 +130,17 @@ main {
       padding-right: .6em;
     }
   }
+}
+
+.clock > div {
+  position: absolute;
+  top: 1em;
+  z-index: 1;
+  left: 1em;
+  font-size: .8em;
+  color: #fff;
+  background-color: rgba(0,0,0,0.35);
+  line-height: 2.2em;
+  border-radius: 2em;
+  padding: 0 1em;
 }
