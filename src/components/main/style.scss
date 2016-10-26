@@ -55,6 +55,7 @@ main {
     background-color: rgba(0, 0, 0, 0.35);
     padding-left: 1em;
     border-radius: 2em;
+    font-weight: bold;
     a {
       color: #fff;
     }
@@ -132,9 +133,9 @@ main {
   }
 }
 
-.clock > div {
+.clock {
   position: absolute;
-  top: 1em;
+  bottom: 1em;
   z-index: 1;
   left: 1em;
   font-size: .8em;
@@ -143,4 +144,5 @@ main {
   line-height: 2.2em;
   border-radius: 2em;
   padding: 0 1em;
+  font-weight: bold;
 }
