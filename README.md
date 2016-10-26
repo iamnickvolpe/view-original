@@ -70,7 +70,7 @@ Copy and paste the credentials into .env.
 ![13](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-16.png)
 Under the gear on the top-left of the Firebase console, navigate to "Project Settings" and copy and paste the "Project ID" into the FBS_PROJECTID section of .env.
 
-#### 5. Firebase Service Account Private Key
+#### 5. Firebase Service Account Private Key and Email
 
 ![14](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-20.png)
 Navigate to "Permissions" under the gear at the top left of the Firebase console.
@@ -82,7 +82,7 @@ Navigate to "Service Accounts". Under the default service account, click "..." t
 Download the JSON and open it up in your favorite text editor.
 
 ![17](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-25.png)
-Copy and paste the private_key into FBS_PRIVATEKEY in .env.
+Copy and paste the private_key into FBS_PRIVATEKEY and FBS_CLIENTEMAIL in .env.
 
 ### Setup Firebase Rules
 ![18](https://raw.githubusercontent.com/iamnickvolpe/view/master/documentation-images/View%20Documentation-26.png)
