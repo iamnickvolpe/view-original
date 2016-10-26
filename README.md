@@ -127,7 +127,7 @@ gulp build
 #### Build and Watch for Changes
 This will re-build and reload the browser every time a change is made.
 ```
-gulp watch
+gulp dev
 ```
 
 #### Run!
