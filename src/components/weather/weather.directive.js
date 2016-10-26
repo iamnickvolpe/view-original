@@ -13,11 +13,11 @@ module.exports = function time($http, $interval, $cookies, $rootScope) {
         }
         
         function getData() {
-          $scope.data = [];
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/weather', { headers: {'x-access-token': token} })
             .success(function(response) {
               if (!response.response.error) {
+                $scope.data = [];
                 $scope.data = response;
                 $rootScope.ftux.weather = false;
               } else {

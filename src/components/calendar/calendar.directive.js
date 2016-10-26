@@ -13,11 +13,11 @@ module.exports = function calendar($http, $interval, $cookies, $firebaseAuth, $r
         }
 
         function getData() {
-          $scope.items = [];
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/google/events', { headers: {'x-access-token': token} })
               .success(function(response) {
                 if (response.success !== false) {
+                  $scope.items = [];
                   $scope.items = response;
                   $rootScope.ftux.calendar = false;
                 } else {

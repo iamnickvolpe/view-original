@@ -65,11 +65,11 @@ module.exports = function feed($http, $interval, $timeout, $firebaseObject, $roo
         }
         
         function getData() {
-          $scope.items = [];
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/feedly/feed', { headers: {'x-access-token': token} })
             .success(function(response) {
               if (response.success !== false) {
+                $scope.items = [];
                 $scope.items = response.items;
                 $rootScope.ftux.feed = false;
               } else {
