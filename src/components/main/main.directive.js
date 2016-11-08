@@ -6,12 +6,15 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray) {
         $scope.notes = $firebaseArray(ref);
         if (annyang) {
           var commands = {
-            'okay view remind me to *todo': function(todo) {
+            'remind me to *todo': function(todo) {
               $scope.notes.$add({text: todo});
+              annyang.abort();
             }
           };
           annyang.addCommands(commands);
-          annyang.start();
+          SpeechKITT.annyang();
+          SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
+          SpeechKITT.vroom();
         }
 
         position();
