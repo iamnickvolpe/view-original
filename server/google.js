@@ -3,14 +3,13 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-var firebase = require('firebase');
 var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 
 var clientSecret = process.env.GOOGLE_CLIENTSECRET;
 var clientId  = process.env.GOOGLE_CLIENTID;
 
 exports.getEvents = function(req, res) {
-  var db = firebase.database();
+  var db = require('../app.js').FBApp.database();
   var ref = db.ref('/users/'+req.decoded.sub);
 
   var auth = new googleAuth();
@@ -39,7 +38,7 @@ exports.getEvents = function(req, res) {
 }
 
 exports.getCalendars = function(req, res) {
-  var db = firebase.database();
+  var db = require('../app.js').FBApp.database();
   var ref = db.ref('/users/'+req.decoded.sub);
   var auth = new googleAuth();
   var oauth2Client = new auth.OAuth2(clientId, clientSecret, getRedirectUrl(req));
@@ -63,7 +62,7 @@ exports.getCalendars = function(req, res) {
 }
 
 exports.connect = function(req, res) {
-  var db = firebase.database();
+  var db = require('../app.js').FBApp.database();
   var ref = db.ref('/users/'+req.decoded.sub+'/credentials/google');
   var auth = new googleAuth();
   var oauth2Client = new auth.OAuth2(clientId, clientSecret, getRedirectUrl(req));

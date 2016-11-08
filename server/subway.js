@@ -1,8 +1,7 @@
 module.exports = function(req, res) {
   var request = require('request');
   var options;
-  var firebase = require('firebase');
-  var db = firebase.database();
+  var db = require('../app.js').FBApp.database();
   var ref = db.ref('/users/'+req.decoded.sub);
   var parseString = require('xml2js').parseString;
 

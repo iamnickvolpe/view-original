@@ -1,4 +1,4 @@
-var firebase = require('firebase');
+var firebase = require('../app.js').FBApp;
 
 module.exports = function(req, res, next) {
   var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies.token;
