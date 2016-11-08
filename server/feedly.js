@@ -2,7 +2,7 @@ var Feedly = require('feedly');
 var request = require('request');
 var fs = require('fs');
 var options;
-var db = require('../app.js').FBApp.database();
+var db = require('./firebase.js').FBApp.database();
 
 exports.getFeed = function(req, res) {
   var ref = db.ref('/users/'+req.decoded.sub);

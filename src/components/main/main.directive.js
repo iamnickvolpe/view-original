@@ -1,7 +1,19 @@
-module.exports = function main($http, $cookies, $window, Auth) {  
+module.exports = function main($http, $cookies, $window, Auth, $firebaseArray) {  
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {
+        var ref = firebase.database().ref('users').child($scope.firebaseUser.uid).child("notes");
+        $scope.notes = $firebaseArray(ref);
+        if (annyang) {
+          var commands = {
+            'okay view remind me to *todo': function(todo) {
+              $scope.notes.$add({text: todo});
+            }
+          };
+          annyang.addCommands(commands);
+          annyang.start();
+        }
+
         position();
         $scope.inspectorOpen = false;
         

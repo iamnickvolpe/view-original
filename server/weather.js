@@ -1,7 +1,7 @@
 module.exports = function(req, res) {
   var request = require('request');
   var options;
-  var db = require('../app.js').FBApp.database();
+  var db = require('./firebase.js').FBApp.database();
   var ref = db.ref('/users/'+req.decoded.sub);
 
   ref.once("value", function(snapshot) {

@@ -22,30 +22,6 @@ app.use('/qrcode-generator', express.static(__dirname + '/node_modules/qrcode-ge
 app.use('/angular-qrcode', express.static(__dirname + '/node_modules/angular-qrcode'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-var admin = require("firebase-admin");
-var key = process.env.FBS_PRIVATEKEY.replace(/\\n/g, '\n');
-
-var FbApp = admin.initializeApp({
-  credential: admin.credential.cert({
-    projectId: process.env.FBS_PROJECTID,
-    clientEmail: process.env.FBS_CLIENTEMAIL,
-    privateKey: key
-  }),
-  databaseURL: process.env.FBC_DBURL
-});
-
-module.exports.FBApp = FbApp;
-
-/*
-firebase.initializeApp({
-  serviceAccount: {
-    project_id: process.env.FBS_PROJECTID,
-    private_key: key,
-    client_email: process.env.FBS_CLIENTEMAIL
-  },
-  databaseURL: process.env.FBC_DBURL
-});
-*/
 // Server files
 var google = require('./server/google.js');
 var feedly = require('./server/feedly.js');

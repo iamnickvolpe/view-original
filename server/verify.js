@@ -1,4 +1,4 @@
-var firebase = require('../app.js').FBApp;
+var firebaseApp = require('./firebase.js').FBApp;
 
 module.exports = function(req, res, next) {
   var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies.token;
@@ -8,7 +8,7 @@ module.exports = function(req, res, next) {
         message: 'No token provided.' 
     });
   }
-  firebase.auth().verifyIdToken(token).then(function(decoded) {
+  firebaseApp.auth().verifyIdToken(token).then(function(decoded) {
     req.decoded = decoded;
     next();
   }).catch(function(error) {
