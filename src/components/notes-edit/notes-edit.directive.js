@@ -1,7 +1,7 @@
 module.exports = function notesEdit($http, $interval, $timeout, $firebaseArray) {  
     return {
       scope: true,
-      controller: function($scope, $element, $attrs) {  
+      controller: function($scope, $element, $attrs) {     
         var ref = firebase.database().ref('users').child($scope.firebaseUser.uid).child("notes");
         $scope.notes = $firebaseArray(ref);
 

@@ -62,7 +62,7 @@ p {
 
 .section__image img {
   width: 50%;
-  box-shadow: 0 0 6em -0.2em rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4em -0.2em rgba(0, 0, 0, 0.5);
   min-width: 200px;
   margin-bottom: 2em;
 }
@@ -186,7 +186,7 @@ a.button--util-knockout {
 
 .section--hand img {
   position: absolute;
-  bottom: -40px;
+  bottom: -80px;
   margin: 0;
   right: 10%;
   width: 28%;
@@ -242,6 +242,10 @@ a.button--util-knockout {
     .section,
     .main-content {
       padding: 3em 0;
+    }
+
+    .section__image img {
+      box-shadow: 0 0 2em -0.1em rgba(0, 0, 0, 0.5);
     }
 
     .main-content {
