@@ -88,7 +88,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                         h = 12;
                     }
                     m = m<10?"0"+m:m;
-                    var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees.');
+                    var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. Today\'s weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext);
                     window.speechSynthesis.speak(msg);
                   }
                 });
