@@ -26,34 +26,77 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         $scope.notes = $firebaseArray(ref);
         if (annyang) {
           var commands = {
-            'remind me to *todo': function(todo) {
+            'computer remind me to *todo': function(todo) {
+              window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Adding your reminder: ' +todo+'.');
               window.speechSynthesis.speak(msg);
               $scope.notes.$add({text: todo});
             },
-            'show the dashboard': function() {
+            'computer show the dashboard': function() {
+              window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Showing the dashboard.');
               window.speechSynthesis.speak(msg);
               preferencesRef.update({showDashboard:true});
             },
-            'hide the dashboard': function() {
+            'computer hide the dashboard': function() {
+              window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Hiding the dashboard.');
               window.speechSynthesis.speak(msg);
               preferencesRef.update({showDashboard:false});
             },
-            'show me an image of *search': function(search) {
-              var msg = new SpeechSynthesisUtterance('Showing you an image of ' +search+'.');
+            'computer show an image of *search': function(search) {
+              window.speechSynthesis.cancel();
+              var msg = new SpeechSynthesisUtterance('Showing an image of ' +search+'.');
               window.speechSynthesis.speak(msg);
               searchImage(search);
             },
-            'show me a random image': function() {
-              var msg = new SpeechSynthesisUtterance('Showing you a random image.');
+            'computer show a random image': function() {
+              window.speechSynthesis.cancel();
+              var msg = new SpeechSynthesisUtterance('Showing a random image.');
               window.speechSynthesis.speak(msg);
               randomImage();
+            },
+            'computer hello': function() {
+              window.speechSynthesis.cancel();
+
+              $scope.firebaseUser.getToken().then(function(token) {
+                $http.get('/api/weather', { headers: {'x-access-token': token} })
+                .success(function(response) {
+                  if (!response.response.error) {
+                    var greeting;
+                    var d = new Date();
+                    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                    var hh = d.getHours();
+                    var m = d.getMinutes();
+                    var dd = "AM";
+                    var h = hh;
+
+                    if (hh > 5 && h < 12) {
+                      greeting = 'Good morning! ';
+                    } else if (hh > 11 && hh < 19) {
+                      greeting = 'Good afternoon! ';
+                    } else {
+                      greeting = 'Good evening! ';
+                    }
+
+                    if (h >= 12) {
+                        h = hh-12;
+                        dd = "PM";
+                    }
+                    if (h == 0) {
+                        h = 12;
+                    }
+                    m = m<10?"0"+m:m;
+                    var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees.');
+                    window.speechSynthesis.speak(msg);
+                  }
+                });
+              });
             }
           };
           annyang.addCommands(commands);
-          annyang.start();
+          annyang.start({ autoRestart: true });
         }
 
         position();
