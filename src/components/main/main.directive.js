@@ -74,7 +74,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
 
                     if (hh > 5 && h < 12) {
                       greeting = 'Good morning! ';
-                    } else if (hh > 11 && hh < 19) {
+                    } else if (hh > 11 && hh < 18) {
                       greeting = 'Good afternoon! ';
                     } else {
                       greeting = 'Good evening! ';
@@ -88,7 +88,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                         h = 12;
                     }
                     m = m<10?"0"+m:m;
-                    var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. Today\'s weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext);
+                    var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. The upcoming weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext);
                     window.speechSynthesis.speak(msg);
                   }
                 });
