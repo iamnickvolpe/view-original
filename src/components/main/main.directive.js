@@ -27,16 +27,29 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         if (annyang) {
           var commands = {
             'remind me to *todo': function(todo) {
+              var msg = new SpeechSynthesisUtterance('Adding your reminder: ' +todo+'.');
+              window.speechSynthesis.speak(msg);
               $scope.notes.$add({text: todo});
             },
             'show the dashboard': function() {
+              var msg = new SpeechSynthesisUtterance('Showing the dashboard.');
+              window.speechSynthesis.speak(msg);
               preferencesRef.update({showDashboard:true});
             },
             'hide the dashboard': function() {
+              var msg = new SpeechSynthesisUtterance('Hiding the dashboard.');
+              window.speechSynthesis.speak(msg);
               preferencesRef.update({showDashboard:false});
             },
-            'change image to *search': function(search) {
-              updateImage(search);
+            'show me an image of *search': function(search) {
+              var msg = new SpeechSynthesisUtterance('Showing you an image of ' +search+'.');
+              window.speechSynthesis.speak(msg);
+              searchImage(search);
+            },
+            'show me a random image': function() {
+              var msg = new SpeechSynthesisUtterance('Showing you a random image.');
+              window.speechSynthesis.speak(msg);
+              randomImage();
             }
           };
           annyang.addCommands(commands);
@@ -69,9 +82,18 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
           $scope.inspectorOpen = true;
         }
 
-        function updateImage(categories) {
+        function searchImage(categories) {
           $scope.firebaseUser.getToken().then(function(token) {
-            $http.get('/api/unsplash?categories='+categories, { headers: {'x-access-token': token} })
+            $http.get('/api/unsplash?type=search&categories='+categories, { headers: {'x-access-token': token} })
+            .success(function(response) {
+              preferencesRef.update({backgroundImage:response});
+            });
+          });
+        }
+
+        function randomImage() {
+          $scope.firebaseUser.getToken().then(function(token) {
+            $http.get('/api/unsplash?type=random', { headers: {'x-access-token': token} })
             .success(function(response) {
               preferencesRef.update({backgroundImage:response});
             });
