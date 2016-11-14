@@ -1,20 +1,46 @@
-module.exports = function main($http, $cookies, $window, Auth, $firebaseArray) {  
+module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $firebaseObject) {  
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {
+        var preferencesRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences');
+
+        $scope.backgroundImage;
+        var backgroundImageRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/backgroundImage');
+        var backgroundImage = $firebaseObject(backgroundImageRef);
+        backgroundImage.$watch(function() {
+          if(backgroundImage.$value && backgroundImage.$value !== 'undefined') {
+            jQuery($element).find('.main-wrapper').css('background-image', 'url('+backgroundImage.$value+')');
+          } else {
+            jQuery($element).find('.main-wrapper').removeAttr( 'style' );
+          }
+        });
+
+        $scope.showDashboard;
+        var showDashboardRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/showDashboard');
+        var showDashboard = $firebaseObject(showDashboardRef);
+        showDashboard.$watch(function() {
+          $scope.showDashboard = showDashboard;
+        });
+
         var ref = firebase.database().ref('users').child($scope.firebaseUser.uid).child("notes");
         $scope.notes = $firebaseArray(ref);
         if (annyang) {
           var commands = {
             'remind me to *todo': function(todo) {
               $scope.notes.$add({text: todo});
-              annyang.abort();
+            },
+            'show the dashboard': function() {
+              preferencesRef.update({showDashboard:true});
+            },
+            'hide the dashboard': function() {
+              preferencesRef.update({showDashboard:false});
+            },
+            'change image to *search': function(search) {
+              updateImage(search);
             }
           };
           annyang.addCommands(commands);
-          SpeechKITT.annyang();
-          SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
-          SpeechKITT.vroom();
+          annyang.start();
         }
 
         position();
@@ -41,6 +67,15 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray) {
 
         $scope.openInspector = function() {
           $scope.inspectorOpen = true;
+        }
+
+        function updateImage(categories) {
+          $scope.firebaseUser.getToken().then(function(token) {
+            $http.get('/api/unsplash?categories='+categories, { headers: {'x-access-token': token} })
+            .success(function(response) {
+              preferencesRef.update({backgroundImage:response});
+            });
+          });
         }
 
       },

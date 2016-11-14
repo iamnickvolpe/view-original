@@ -28,6 +28,7 @@ var feedly = require('./server/feedly.js');
 var weather = require('./server/weather.js');
 var subway = require('./server/subway.js');
 var verify = require('./server/verify.js');
+var unsplash = require('./server/unsplash.js');
 
 // Middleware to prevent API access
 app.use('/api', verify);
@@ -46,6 +47,9 @@ app.get('/api/weather', weather);
 
 // MTP API
 app.get('/api/subway', subway);
+
+// Unsplash API
+app.get('/api/unsplash', unsplash);
 
 // Google auth URL
 app.get('/google-auth', google.connect);
