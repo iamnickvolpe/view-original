@@ -26,37 +26,42 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         $scope.notes = $firebaseArray(ref);
         if (annyang) {
           var commands = {
-            'computer remind me to *todo': function(todo) {
+            'add a note *todo': function(todo) {
               window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Adding your reminder: ' +todo+'.');
+              msg.lang = 'en-US';
               window.speechSynthesis.speak(msg);
               $scope.notes.$add({text: todo});
             },
-            'computer show the dashboard': function() {
+            'show the dashboard': function() {
               window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Showing the dashboard.');
+              msg.lang = 'en-US';
               window.speechSynthesis.speak(msg);
               preferencesRef.update({showDashboard:true});
             },
-            'computer hide the dashboard': function() {
+            'hide the dashboard': function() {
               window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Hiding the dashboard.');
+              msg.lang = 'en-US';
               window.speechSynthesis.speak(msg);
               preferencesRef.update({showDashboard:false});
             },
-            'computer show an image of *search': function(search) {
+            'show an image of *search': function(search) {
               window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Showing an image of ' +search+'.');
+              msg.lang = 'en-US';
               window.speechSynthesis.speak(msg);
               searchImage(search);
             },
-            'computer show a random image': function() {
+            'show a random image': function() {
               window.speechSynthesis.cancel();
               var msg = new SpeechSynthesisUtterance('Showing a random image.');
+              msg.lang = 'en-US';
               window.speechSynthesis.speak(msg);
               randomImage();
             },
-            'computer hello': function() {
+            'hello view': function() {
               window.speechSynthesis.cancel();
 
               $scope.firebaseUser.getToken().then(function(token) {
@@ -89,6 +94,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                     }
                     m = m<10?"0"+m:m;
                     var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. The upcoming weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext);
+                    msg.lang = 'en-US';
                     window.speechSynthesis.speak(msg);
                   }
                 });
@@ -96,7 +102,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             }
           };
           annyang.addCommands(commands);
-          annyang.start({ autoRestart: true });
+          annyang.start();
         }
 
         position();
