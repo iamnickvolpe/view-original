@@ -20,6 +20,7 @@ app.use('/normalize', express.static(__dirname + '/node_modules/normalize.css/')
 app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome'));
 app.use('/qrcode-generator', express.static(__dirname + '/node_modules/qrcode-generator'));
 app.use('/angular-qrcode', express.static(__dirname + '/node_modules/angular-qrcode'));
+app.use('/artyom.js', express.static(__dirname + '/node_modules/artyom.js/'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Server files

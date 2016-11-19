@@ -1,4 +1,4 @@
-module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $firebaseObject) {  
+module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $firebaseObject, $timeout) {  
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {
@@ -22,55 +22,59 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
           $scope.showDashboard = showDashboard;
         });
 
-        var voices = window.speechSynthesis.getVoices();
-
         var ref = firebase.database().ref('users').child($scope.firebaseUser.uid).child("notes");
         $scope.notes = $firebaseArray(ref);
-        if (annyang) {
-          var commands = {
-            'add a note *todo': function(todo) {
-              window.speechSynthesis.cancel();
-              var msg = new SpeechSynthesisUtterance('Adding your note: ' +todo+'.');
-              msg.lang = 'en-US';
-              msg.voice = voices[65];
-              window.speechSynthesis.speak(msg);
-              $scope.notes.$add({text: todo});
-            },
-            'show the dashboard': function() {
-              window.speechSynthesis.cancel();
-              var msg = new SpeechSynthesisUtterance('Showing the dashboard.');
-              msg.lang = 'en-US';
-              msg.voice = voices[65];
-              window.speechSynthesis.speak(msg);
-              preferencesRef.update({showDashboard:true});
-            },
-            'hide the dashboard': function() {
-              window.speechSynthesis.cancel();
-              var msg = new SpeechSynthesisUtterance('Hiding the dashboard.');
-              msg.lang = 'en-US';
-              msg.voice = voices[65];
-              window.speechSynthesis.speak(msg);
-              preferencesRef.update({showDashboard:false});
-            },
-            'show an image of *search': function(search) {
-              window.speechSynthesis.cancel();
-              var msg = new SpeechSynthesisUtterance('Showing an image of ' +search+'.');
-              msg.lang = 'en-US';
-              msg.voice = voices[65];
-              window.speechSynthesis.speak(msg);
-              searchImage(search);
-            },
-            'show a random image': function() {
-              window.speechSynthesis.cancel();
-              var msg = new SpeechSynthesisUtterance('Showing a random image.');
-              msg.lang = 'en-US';
-              msg.voice = voices[65];
-              window.speechSynthesis.speak(msg);
-              randomImage();
-            },
-            'hello view': function() {
-              window.speechSynthesis.cancel();
 
+        $scope.recognizedText;
+        artyom.redirectRecognizedTextOutput(function(recognized,isFinal){
+          $scope.recognizedText = recognized || isFinal;
+          $timeout(function() {
+            $scope.recognizedText = null;
+          }, 5000)
+        });
+
+        var commands = [
+          {
+            smart: true,
+            indexes:["add a note *"],
+            action: function(i, x) {
+              artyom.say("Adding your note. "+ x, {onEnd:function(){artyom.clearGarbageCollection()}});
+              $scope.notes.$add({text: x});
+            }
+          },
+          {
+            indexes:["hide the dashboard"],
+            action: function(i) {
+              artyom.say("Hiding the dashboard.", {onEnd:function(){artyom.clearGarbageCollection()}});
+              preferencesRef.update({showDashboard:false});
+            }
+          },
+          {
+            indexes:["show the dashboard."],
+            action: function(i) {
+              artyom.say("Showing the dashboard.", {onEnd:function(){artyom.clearGarbageCollection()}});
+              preferencesRef.update({showDashboard:true});
+            }
+          },
+          {
+            smart: true,
+            indexes:["show an image of *"],
+            action: function(i, x) {
+              artyom.say("Showing an image of "+ x, {onEnd:function(){artyom.clearGarbageCollection()}});
+              searchImage(x);
+            }
+          },
+          {
+            indexes:["show a random image"],
+            action: function(i) {
+              artyom.say("Showing a random image", {onEnd:function(){artyom.clearGarbageCollection()}});
+              randomImage();
+            }
+          },
+          {
+            smart: false,
+            indexes:["hello view", "i love you", "hello review"],
+            action: function(i) {
               $scope.firebaseUser.getToken().then(function(token) {
                 $http.get('/api/weather', { headers: {'x-access-token': token} })
                 .success(function(response) {
@@ -100,18 +104,24 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                         h = 12;
                     }
                     m = m<10?"0"+m:m;
-                    var msg = new SpeechSynthesisUtterance(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. The upcoming weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext);
-                    msg.lang = 'en-US';
-                    msg.voice = voices[65];
-                    window.speechSynthesis.speak(msg);
+                    artyom.say(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. The upcoming weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext, {onEnd:function(){artyom.clearGarbageCollection()}});
                   }
                 });
               });
             }
-          };
-          annyang.addCommands(commands);
-          annyang.start();
-        }
+          }
+        ]
+
+        artyom.addCommands(commands); 
+
+        artyom.initialize({
+          lang:"en-GB",
+          debug:false, // Show what recognizes in the Console
+          listen:true, // Start listening after this
+          speed:0.9, // Talk a little bit slow
+          continuous:true,
+          soundex: true
+        });
 
         position();
         $scope.inspectorOpen = false;

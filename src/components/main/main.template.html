@@ -2,6 +2,7 @@
     <remote></remote>
 </div>
 <div class="main-wrapper">
+  <div class="recognized-text"><div class="recognized-text__icon"><i class="fa fa-microphone" aria-hidden="true"></i></div><div class="recognized-text__text" ng-show="recognizedText">{{recognizedText}}</div></div>
   <time class="clock" style="h:mma"></time>
   <subway ng-show="showDashboard.$value===true"></subway>
   <div class="main-wrapper__logged-in">{{firebaseUser.email}}<div ng-click="toggleInspector()" class="settings-link"><i class="fa fa-cog" aria-hidden="true"></i></div></div>
