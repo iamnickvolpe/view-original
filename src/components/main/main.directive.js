@@ -115,7 +115,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         artyom.addCommands(commands); 
 
         artyom.initialize({
-          lang:"en-GB",
+          lang:"en",
           debug:false, // Show what recognizes in the Console
           listen:true, // Start listening after this
           speed:0.9, // Talk a little bit slow
