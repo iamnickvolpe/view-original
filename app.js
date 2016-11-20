@@ -7,6 +7,20 @@ var ejs = require('ejs');
 var express = require('express');
 var app = module.exports = express();
 
+var https_redirect = function(req, res, next) {
+    if (process.env.NODE_ENV === 'production') {
+        if (req.headers['x-forwarded-proto'] != 'https') {
+            return res.redirect('https://' + req.headers.host + req.url);
+        } else {
+            return next();
+        }
+    } else {
+        return next();
+    }
+};
+
+app.use(https_redirect);
+
 // Express settings
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
