@@ -72,6 +72,23 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             }
           },
           {
+            indexes:["wake up"],
+            action: function(i) {
+              var greeting;
+              var d = new Date();
+              var hh = d.getHours();
+              if (hh > 5 && hh < 12) {
+                greeting = 'Good morning! ';
+              } else if (hh > 11 && hh < 18) {
+                greeting = 'Good afternoon! ';
+              } else {
+                greeting = 'Good evening! ';
+              }
+              artyom.say(greeting, {onEnd:function(){artyom.clearGarbageCollection()}});
+              jQuery('body').trigger('click');
+            }
+          },
+          {
             smart: false,
             indexes:["hello view", "i love you", "hello review"],
             action: function(i) {
@@ -88,7 +105,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                     var dd = "AM";
                     var h = hh;
 
-                    if (hh > 5 && h < 12) {
+                    if (hh > 5 && hh < 12) {
                       greeting = 'Good morning! ';
                     } else if (hh > 11 && hh < 18) {
                       greeting = 'Good afternoon! ';
