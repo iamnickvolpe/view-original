@@ -141,7 +141,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
               });
             },2000);
           }
-        },1800000);
+        },300000);
 
         position();
         $scope.inspectorOpen = false;
