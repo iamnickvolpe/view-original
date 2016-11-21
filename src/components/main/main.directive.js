@@ -50,7 +50,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             }
           },
           {
-            indexes:["show the dashboard."],
+            indexes:["show the dashboard"],
             action: function(i) {
               artyom.say("Showing the dashboard.", {onEnd:function(){artyom.clearGarbageCollection()}});
               preferencesRef.update({showDashboard:true});
