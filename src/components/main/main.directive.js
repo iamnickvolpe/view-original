@@ -120,28 +120,9 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             debug:false,
             listen:true,
             speed:0.9,
-            continuous:true,
-            soundex: true
+            continuous:true
           });
         },2000);
-
-        $interval(function(){
-          if(artyom.isRecognizing() === false) {
-            artyom.fatality();
-            artyom.emptyCommands();
-            artyom.addCommands(commands);
-            $timeout(function(){
-              artyom.initialize({
-                lang:"en-GB",
-                debug:false,
-                listen:true,
-                speed:0.9,
-                continuous:true,
-                soundex: true
-              });
-            },2000);
-          }
-        },300000);
 
         position();
         $scope.inspectorOpen = false;
