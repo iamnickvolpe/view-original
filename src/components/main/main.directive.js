@@ -72,23 +72,6 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             }
           },
           {
-            indexes:["wake up"],
-            action: function(i) {
-              var greeting;
-              var d = new Date();
-              var hh = d.getHours();
-              if (hh > 5 && hh < 12) {
-                greeting = 'Good morning! ';
-              } else if (hh > 11 && hh < 18) {
-                greeting = 'Good afternoon! ';
-              } else {
-                greeting = 'Good evening! ';
-              }
-              artyom.say(greeting, {onEnd:function(){artyom.clearGarbageCollection()}});
-              jQuery('body').trigger('click');
-            }
-          },
-          {
             smart: false,
             indexes:["hello view", "i love you", "hello review"],
             action: function(i) {
@@ -130,15 +113,19 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         ]
 
         artyom.addCommands(commands); 
+        
+        artyom.fatality();//Stop any previous active artyom
 
-        artyom.initialize({
-          lang:"en",
-          debug:true, // Show what recognizes in the Console
-          listen:true, // Start listening after this
-          speed:0.9, // Talk a little bit slow
-          continuous:true,
-          soundex: true
-        });
+        setTimeout(function(){
+          artyom.initialize({
+            lang:"en-GB",
+            debug:false, // Show what recognizes in the Console
+            listen:true, // Start listening after this
+            speed:0.9, // Talk a little bit slow
+            continuous:true,
+            soundex: true
+          });
+        },2000);
 
         position();
         $scope.inspectorOpen = false;
