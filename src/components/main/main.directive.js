@@ -1,4 +1,4 @@
-module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $firebaseObject, $timeout) {  
+module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $firebaseObject, $timeout, $interval) {  
     return {
       scope: true,
       controller: function($scope, $element, $attrs) {
@@ -112,20 +112,36 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
           }
         ]
 
-        artyom.addCommands(commands); 
-        
-        artyom.fatality();//Stop any previous active artyom
-
-        setTimeout(function(){
+        artyom.fatality();
+        artyom.addCommands(commands);
+        $timeout(function(){
           artyom.initialize({
             lang:"en-GB",
-            debug:false, // Show what recognizes in the Console
-            listen:true, // Start listening after this
-            speed:0.9, // Talk a little bit slow
+            debug:false,
+            listen:true,
+            speed:0.9,
             continuous:true,
             soundex: true
           });
         },2000);
+
+        $interval(function(){
+          if(artyom.isRecognizing() === false) {
+            artyom.fatality();
+            artyom.emptyCommands();
+            artyom.addCommands(commands);
+            $timeout(function(){
+              artyom.initialize({
+                lang:"en-GB",
+                debug:false,
+                listen:true,
+                speed:0.9,
+                continuous:true,
+                soundex: true
+              });
+            },2000);
+          }
+        },1800000);
 
         position();
         $scope.inspectorOpen = false;
