@@ -1,4 +1,4 @@
-module.exports = function settings($http, $cookies, $window, $firebaseObject, Auth, $location) {  
+module.exports = function settings($http, $cookies, $window, $firebaseObject, Auth, $location, $firebaseArray) {  
     return {
       controller: function($scope, $element, $attrs) {
         $scope.auth = Auth;
@@ -52,6 +52,17 @@ module.exports = function settings($http, $cookies, $window, $firebaseObject, Au
         $scope.logout = function() {
           $scope.auth.$signOut();
           $window.location.href = '/login';
+        }
+
+        var commandsRef = firebase.database().ref('users').child($scope.firebaseUser.uid).child("commands");
+        $scope.myCommands = $firebaseArray(commandsRef);
+
+        $scope.addCommand = function() {
+          $scope.myCommands.$add({trigger: '', action: '', response: ''});
+        }
+
+        $scope.removeCommand = function(key) {
+          $scope.myCommands.$remove($scope.myCommands[key]);
         }
       },
       templateUrl: './components/settings/settings.template.html'

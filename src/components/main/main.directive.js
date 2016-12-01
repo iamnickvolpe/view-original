@@ -33,26 +33,60 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
           }, 5000)
         });
 
+        var commandsRef = firebase.database().ref('users').child($scope.firebaseUser.uid).child("commands");
+        var myCommands = $firebaseArray(commandsRef)
+        
+        myCommands.$loaded()
+        .then(function(commands){
+          angular.forEach(commands, function(value, key) {
+            var triggerString = value.trigger;
+            var actionString = value.action;
+            var responseString = value.response;
+
+            var command = {
+              indexes: triggerString.split(','),
+              action: function(i) {
+                artyom.say(responseString);
+                $scope.firebaseUser.getToken().then(function(token) {
+                  $http.get('/api/ifttt', { 
+                    headers: {
+                      'x-access-token': token
+                    },
+                    params: {
+                      'trigger': actionString
+                    } 
+                  })
+                  .success(function(response) {
+                    console.log(response);
+                  });
+                });
+              }
+            }
+
+            artyom.addCommands(command);
+          });
+        });
+
         var commands = [
           {
             smart: true,
             indexes:["add a note *"],
             action: function(i, x) {
-              artyom.say("Adding your note. "+ x, {onEnd:function(){artyom.clearGarbageCollection()}});
+              artyom.say("Adding your note. "+ x+".");
               $scope.notes.$add({text: x});
             }
           },
           {
             indexes:["hide the dashboard"],
             action: function(i) {
-              artyom.say("Hiding the dashboard.", {onEnd:function(){artyom.clearGarbageCollection()}});
+              artyom.say("Hiding the dashboard.");
               preferencesRef.update({showDashboard:false});
             }
           },
           {
             indexes:["show the dashboard"],
             action: function(i) {
-              artyom.say("Showing the dashboard.", {onEnd:function(){artyom.clearGarbageCollection()}});
+              artyom.say("Showing the dashboard.");
               preferencesRef.update({showDashboard:true});
             }
           },
@@ -60,14 +94,14 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             smart: true,
             indexes:["show an image of *"],
             action: function(i, x) {
-              artyom.say("Showing an image of "+ x, {onEnd:function(){artyom.clearGarbageCollection()}});
+              artyom.say("Showing an image of "+ x+".");
               searchImage(x);
             }
           },
           {
             indexes:["show a random image"],
             action: function(i) {
-              artyom.say("Showing a random image", {onEnd:function(){artyom.clearGarbageCollection()}});
+              artyom.say("Showing a random image.");
               randomImage();
             }
           },
@@ -104,7 +138,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                         h = 12;
                     }
                     m = m<10?"0"+m:m;
-                    artyom.say(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. The upcoming weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext, {onEnd:function(){artyom.clearGarbageCollection()}});
+                    artyom.say(greeting+'It is '+days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+' '+h+':'+m+' '+dd+'. The current temperature is '+response.current_observation.temp_f+' degrees. The upcoming weather forecast is '+response.forecast.txt_forecast.forecastday[0].fcttext+".");
                   }
                 });
               });

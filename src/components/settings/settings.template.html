@@ -21,7 +21,7 @@
         </div>
         <div class="settings__input">
             <label>Key</label>
-            <input type="password" ng-model="userInfo.credentials.weatherUnderground"> 
+            <input type="text" ng-model="userInfo.credentials.weatherUnderground"> 
         </div>
         <div class="settings__input">
             <label>Zip Code</label>
@@ -35,11 +35,11 @@
         </div>
          <div class="settings__input">
             <label>User Id</label>
-            <input type="password" ng-model="userInfo.credentials.feedly.userId">
+            <input type="text" ng-model="userInfo.credentials.feedly.userId">
         </div>
         <div class="settings__input">
             <label>Token</label>
-            <input type="password" ng-model="userInfo.credentials.feedly.token">
+            <input type="text" ng-model="userInfo.credentials.feedly.token">
         </div>
         <div class="settings__input">
             <div class="settings__line">
@@ -129,6 +129,33 @@
                 <div class="settings__line-label">SIR</div>
             </div>
         </div>
+    </div>
+
+    <div class="settings__section">
+        <div class="settings__section-title-block">
+            <div class="settings__section-title">IFTTT</div>
+            <div class="settings__section-description">Register your IFTTT events here.</div>
+        </div>
+        <div class="settings__input">
+            <label>Key</label>
+            <input type="text" ng-model="userInfo.credentials.ifttt.key">
+        </div>
+        <div class="settings__command" ng-repeat="(key,command) in myCommands">
+            <div class="settings__input">
+                <label>Trigger</label>
+                <input type="text" ng-model="userInfo.commands[command.$id].trigger"> 
+            </div>
+            <div class="settings__input">
+                <label>Action</label>
+                <input type="text" ng-model="userInfo.commands[command.$id].action"> 
+            </div>
+            <div class="settings__input">
+                <label>Response</label>
+                <input type="text" ng-model="userInfo.commands[command.$id].response"> 
+            </div>
+            <button ng-click="removeCommand(key)">Remove Command</button>
+        </div>
+        <button ng-click="addCommand()">Add Command</button>
     </div>
 
     <div class="settings__section">
