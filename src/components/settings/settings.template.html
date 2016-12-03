@@ -146,6 +146,13 @@
                 <input type="text" ng-model="userInfo.commands[command.$id].trigger"> 
             </div>
             <div class="settings__input">
+                <label>Smart</label>
+                <select ng-model="userInfo.commands[command.$id].smart" ng-change="saveUserInfo()">
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+            </div>
+            <div class="settings__input">
                 <label>Action</label>
                 <input type="text" ng-model="userInfo.commands[command.$id].action"> 
             </div>

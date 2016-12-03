@@ -7,8 +7,15 @@ module.exports = function(req, res) {
   ref.once("value", function(snapshot) {
     var key = snapshot.child('credentials').child('ifttt').child("key").val();
     options = {
-      url: 'https://maker.ifttt.com/trigger/'+req.query.trigger+'/with/key/'+key
-    };
+      method: "POST",
+      url: 'https://maker.ifttt.com/trigger/'+req.query.trigger+'/with/key/'+key, 
+      headers: {
+        'content-type': 'application/json'
+      },
+      json: {
+        "value1": req.query.value
+      }
+    }
     request(options, callback);
   });
 

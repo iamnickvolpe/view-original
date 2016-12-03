@@ -40,12 +40,14 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         .then(function(commands){
           angular.forEach(commands, function(value, key) {
             var triggerString = value.trigger;
+            var smartString = value.smart;
             var actionString = value.action;
             var responseString = value.response;
 
             var command = {
               indexes: triggerString.split(','),
-              action: function(i) {
+              smart: Boolean(smartString),
+              action: function(i, wildcard) {
                 artyom.say(responseString);
                 $scope.firebaseUser.getToken().then(function(token) {
                   $http.get('/api/ifttt', { 
@@ -53,7 +55,8 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                       'x-access-token': token
                     },
                     params: {
-                      'trigger': actionString
+                      'trigger': actionString,
+                      'value': wildcard
                     } 
                   })
                   .success(function(response) {
@@ -64,6 +67,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
             }
 
             artyom.addCommands(command);
+            console.log(command)
           });
         });
 
