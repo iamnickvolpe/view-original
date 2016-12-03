@@ -40,13 +40,18 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
         .then(function(commands){
           angular.forEach(commands, function(value, key) {
             var triggerString = value.trigger;
-            var smartString = value.smart;
+            var smartBool;
+            if(value.smart==="true") {
+              smartBool = true;
+            } else {
+              smartBool = false;
+            }
             var actionString = value.action;
             var responseString = value.response;
 
             var command = {
               indexes: triggerString.split(','),
-              smart: Boolean(smartString),
+              smart: smartBool,
               action: function(i, wildcard) {
                 artyom.say(responseString);
                 $scope.firebaseUser.getToken().then(function(token) {
