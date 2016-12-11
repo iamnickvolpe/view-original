@@ -11,8 +11,16 @@ module.exports = function time($http, $interval, $cookies, $rootScope) {
         if (!$rootScope.ftux) {
           $rootScope.ftux = {};
         }
-        
+
+        $scope.timeOfDay;
         function getData() {
+          var d = new Date();
+          var n = d.getHours();
+          if (n > 5 && n < 19) {
+            $scope.timeOfDay = 'day';
+          } else {
+            $scope.timeOfDay = 'night';
+          }
           $scope.firebaseUser.getToken().then(function(token) {
             $http.get('/api/weather', { headers: {'x-access-token': token} })
             .success(function(response) {

@@ -70,9 +70,7 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
                 });
               }
             }
-
             artyom.addCommands(command);
-            console.log(command)
           });
         });
 

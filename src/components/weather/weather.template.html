@@ -1,4 +1,8 @@
 <div class="weather">
-  <div class="weather__current-temp">{{data.current_observation.temp_f | number: 0}}&#176;</div>
+  <div class="weather__current-temp">
+    <img src="images/weather/weather_{{timeOfDay}}-{{data.current_observation.icon}}.svg">{{data.current_observation.temp_f | number: 0}}&#176;
+  </div>
+  <div class="weather__feels-like">Feels like {{data.current_observation.feelslike_f | number: 0}}&#176;</div>
+  <div class="weather__weather">{{data.current_observation.weather}}</div>
   <div class="weather__high-low">{{data.forecast.simpleforecast.forecastday[0].high.fahrenheit | number: 0}}&#176; / {{data.forecast.simpleforecast.forecastday[0].low.fahrenheit | number: 0}}&#176;</div>
 </div>
