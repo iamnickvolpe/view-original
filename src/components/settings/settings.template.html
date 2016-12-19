@@ -130,41 +130,6 @@
             </div>
         </div>
     </div>
-
-    <div class="settings__section">
-        <div class="settings__section-title-block">
-            <div class="settings__section-title">IFTTT</div>
-            <div class="settings__section-description">Register your IFTTT events here.</div>
-        </div>
-        <div class="settings__input">
-            <label>Key</label>
-            <input type="text" ng-model="userInfo.credentials.ifttt.key">
-        </div>
-        <div class="settings__command" ng-repeat="(key,command) in myCommands">
-            <div class="settings__input">
-                <label>Trigger</label>
-                <input type="text" ng-model="userInfo.commands[command.$id].trigger"> 
-            </div>
-            <div class="settings__input">
-                <label>Smart</label>
-                <select ng-model="userInfo.commands[command.$id].smart" ng-change="saveUserInfo()">
-                  <option value="true">true</option>
-                  <option value="false">false</option>
-                </select>
-            </div>
-            <div class="settings__input">
-                <label>Action</label>
-                <input type="text" ng-model="userInfo.commands[command.$id].action"> 
-            </div>
-            <div class="settings__input">
-                <label>Response</label>
-                <input type="text" ng-model="userInfo.commands[command.$id].response"> 
-            </div>
-            <button ng-click="removeCommand(key)">Remove Command</button>
-        </div>
-        <button ng-click="addCommand()">Add Command</button>
-    </div>
-
     <div class="settings__section">
         <button ng-click="saveUserInfo()">Apply Changes</button> 
     </div>

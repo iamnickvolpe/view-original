@@ -53,25 +53,6 @@ module.exports = function settings($http, $cookies, $window, $firebaseObject, Au
           $scope.auth.$signOut();
           $window.location.href = '/login';
         }
-
-        var commandsRef = firebase.database().ref('users').child($scope.firebaseUser.uid).child("commands");
-        $scope.myCommands = $firebaseArray(commandsRef);
-
-        $scope.addCommand = function() {
-          $scope.userInfo.$save().then(function() {
-            $scope.myCommands.$add({trigger: '', smart: 'false', action: '', response: ''});
-          }).catch(function(error) {
-            alert(error)
-          });
-        }
-
-        $scope.removeCommand = function(key) {
-          $scope.userInfo.$save().then(function() {
-            $scope.myCommands.$remove($scope.myCommands[key]);
-          }).catch(function(error) {
-            alert(error)
-          });
-        }
       },
       templateUrl: './components/settings/settings.template.html'
     }

@@ -44,7 +44,6 @@ var weather = require('./server/weather.js');
 var subway = require('./server/subway.js');
 var verify = require('./server/verify.js');
 var unsplash = require('./server/unsplash.js');
-var ifttt = require('./server/ifttt.js');
 
 // Middleware to prevent API access
 app.use('/api', verify);
@@ -69,9 +68,6 @@ app.get('/api/unsplash', unsplash);
 
 // Google auth URL
 app.get('/google-auth', google.connect);
-
-// IFTTT API
-app.get('/api/ifttt', ifttt);
 
 // Serve index
 app.get('/', function(req, res, next) {
