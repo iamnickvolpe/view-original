@@ -52,7 +52,11 @@
 
     <div class="settings__section">
         <div class="settings__section-title-block">
-            <div class="settings__section-title">Misc</div>
+            <div class="settings__section-title">App Settings</div>
+        </div>
+        <div class="settings__input">
+            <label>Brightness</label>
+            <input type="range" min="0" max="100" step="1" ng-change="saveUserInfo()" ng-model="userInfo.preferences.brightness">
         </div>
         <div class="settings__input">
             <label>Background Image</label>

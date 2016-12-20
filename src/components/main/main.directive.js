@@ -22,6 +22,16 @@ module.exports = function main($http, $cookies, $window, Auth, $firebaseArray, $
           $scope.showDashboard = showDashboard;
         });
 
+        var opacity;
+        var brightnessRef = firebase.database().ref('users/'+$scope.firebaseUser.uid+'/preferences/brightness');
+        var brightness = $firebaseObject(brightnessRef);
+        brightness.$watch(function() {
+          opacity = Number(brightness.$value) * .01;
+          jQuery('.brightness').remove();
+          jQuery('head').append('<style class="brightness">main {opacity: '+opacity+';}</style>');
+
+        });
+
         var ref = firebase.database().ref('users').child($scope.firebaseUser.uid).child("notes");
         $scope.notes = $firebaseArray(ref);
 
