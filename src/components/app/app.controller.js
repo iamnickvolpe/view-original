@@ -4,4 +4,7 @@ module.exports = function($scope, Auth, $window, $cookies, firebaseUser, $locati
     if(!$firebaseObject(preferencesRef).showDashboard) {
       preferencesRef.update({showDashboard: true});
     }
+    if(!$firebaseObject(preferencesRef).brightness) {
+      preferencesRef.update({brightness: 100});
+    }
 };
